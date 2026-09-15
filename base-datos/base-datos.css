@@ -12,3 +12,15 @@ th:last-child,td.actions{text-align:center;min-width:104px}.actions{display:tabl
 
 /* Tipografia de tabla y filtros */
 table{font-size:13px}th{font-size:13px;font-weight:700;letter-spacing:.01em;padding-top:12px;padding-bottom:12px}td{font-size:12px;line-height:1.45}.columnFilters th{padding:8px 6px}.columnFilters input,.columnFilters select{width:100%;min-width:105px;height:34px;border:1px solid var(--line);border-radius:7px;padding:6px 8px;background:#fff;color:#40566b;font:500 11px Inter;text-align:center}.columnFilters select{cursor:pointer}.statusBadge{font-size:11px}.sortButton{font-size:13px;font-weight:700}.summary,.pagination{font-size:12px}.toolbar label{font-size:10px}.toolbar input,.toolbar select{font-size:12px}
+
+/* Ajuste visual solicitado: mayor legibilidad */
+table{font-size:14px}
+thead th{font-size:15px!important;font-weight:800!important;padding-top:14px!important;padding-bottom:14px!important}
+tbody td{font-size:13px!important;line-height:1.5}
+.sortButton{font-size:15px!important;font-weight:800!important;color:#28465f!important}
+.sortButton:hover,.sortButton.active{color:#0f5fbf!important}
+.columnFilters input,.columnFilters select{height:39px!important;min-width:125px!important;padding:8px 10px!important;font:600 13px Inter!important;color:#334e68!important;background-color:#fff!important}
+.columnFilters input::placeholder{font-size:13px!important;color:#8393a5!important;opacity:1}
+.columnFilters select{appearance:auto!important;-webkit-appearance:menulist!important;cursor:pointer!important;padding-right:24px!important}
+tbody td:nth-child(2){color:#0b5cab!important;font-weight:800!important}
+.statusBadge{font-size:12px!important}
