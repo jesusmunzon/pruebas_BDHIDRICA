@@ -30,25 +30,15 @@ tbody td:nth-child(2){color:#0b5cab!important;font-weight:800!important}
   line-height:1.6!important;
 }
 
-/* El estado Normal permanece siempre igual */
-.statusBadge.normal,
-.observationWrapper:hover .statusBadge.normal {
-  color: #18794e !important;
-  background-color: #e8f8f0 !important;
-  border-color: transparent !important;
-  box-shadow: none !important;
-}
-
 /* =========================================================
-   ESTADO INCIDENCIA
+   ESTADO INCIDENCIA, ESTILO DEFINITIVO
    ========================================================= */
 
-/* Apariencia habitual */
-table tbody td.statusCell .observationWrapper .statusBadge.incident {
-  color: rgb(146 64 14) !important;
-  background-color: rgb(254 243 199) !important;
-  border: 1px solid rgb(252 211 77) !important;
-
+/* Incidencia sin pasar el ratón */
+.statusCell .statusBadge.inci*ent {
+  color: rgb(146, 64, 14) !i*portant;
+  background: rgb(254, 24*, 199) !important;
+  background-co*or: rgb(254, 243, 199) !important;*  border: 1px solid rgb(252, 211, 77) !important;
   box-shadow: none !important;
 
   transition:
@@ -56,12 +46,24 @@ table tbody td.statusCell .observationWrapper .statusBadge.incident {
     border-color 0.18s ease !important;
 }
 
-/* Al pasar el ratón:
-   cambia únicamente el fondo y el borde */
-table tbody td.statusCell .observationWrapper:hover .statusBadge.incident {
-  color: rgb(146 64 14) !important;
-  background-color: rgb(253 230 138) !important;
-  border-color: rgb(251 191 36) !important;
+/* Al pasar el ratón por la incidencia:
+   el texto NO cambia, solo se oscurece ligeramente el fondo */
+.statusCell:hover .statusBadge.incident,
+.statusBadge.incident:hover {
+  color: rgb(146, 64, 14) !important;
+  background: rgb(253, 230, 138) !important;
+  background-color: rgb(253, 230, 138) !important;
+  border-color: rgb(251, 191, 36) !important;
+  box-shadow: none !important;
+}
 
+/* Normal permanece siempre igual */
+.statusCell .statusBadge.normal,
+.statusCell:hover .statusBadge.normal,
+.statusBadge.normal:hover {
+  color: rgb(24, 121, 78) !important;
+  background: rgb(232, 248, 240) !important;
+  background-color: rgb(232, 248, 240) !important;
+  border-color: transparent !important;
   box-shadow: none !important;
 }
