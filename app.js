@@ -166,10 +166,24 @@ function update() {
   const selectedMonth = Number(month.value);
   const previousYear = selectedYear - 1;
 
-  // Siempre incluye 2013. Con 2023 seleccionado genera 2013, 2014, ..., 2023.
+  // Obtiene el primer año existente en la base de datos.
+  const firstAvailableYear = Math.min(
+    ...D.map(row => rowYear(row))
+  );
+  
+  // El histórico comienza 10 años antes del año seleccionado,
+  // salvo que ese año no exista en la base de datos.
+  const firstDisplayedYear = Math.max(
+    firstAvailableYear,
+    selectedYear - 10
+  );
+  
+  // Genera hasta 11 años, incluyendo el año seleccionado.
   const historicalYears = Array.from(
-    { length: selectedYear - 2013 + 1 },
-    (_, index) => 2013 + index
+    {
+      length: selectedYear - firstDisplayedYear + 1
+    },
+    (_, index) => firstDisplayedYear + index
   );
 
   periodText.textContent =
