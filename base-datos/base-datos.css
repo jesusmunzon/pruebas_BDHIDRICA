@@ -24,3 +24,28 @@ tbody td{font-size:13px!important;line-height:1.5}
 .columnFilters select{appearance:auto!important;-webkit-appearance:menulist!important;cursor:pointer!important;padding-right:24px!important}
 tbody td:nth-child(2){color:#0b5cab!important;font-weight:800!important}
 .statusBadge{font-size:12px!important}
+
+/* Estado Incidencia: contraste y comportamiento tipo Hydrosmart */
+.statusBadge.incident{
+  color:#9a3412!important;
+  background:#ffedd5!important;
+  border:1px solid #fed7aa!important;
+  transition:background-color .18s ease,color .18s ease,border-color .18s ease,box-shadow .18s ease;
+}
+.observationWrapper:hover .statusBadge.incident{
+  color:#ffffff!important;
+  background:#c2410c!important;
+  border-color:#c2410c!important;
+  box-shadow:0 3px 9px rgba(194,65,12,.24);
+}
+.statusBadge.normal{
+  transition:none!important;
+}
+.observationWrapper:hover .statusBadge.normal{
+  color:#18794e!important;
+  background:#e8f8f0!important;
+}
+.observationTooltip{
+  font-size:13px!important;
+  line-height:1.6!important;
+}
