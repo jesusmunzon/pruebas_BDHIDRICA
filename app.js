@@ -190,7 +190,7 @@ function update() {
     `Datos hasta ${months[selectedMonth - 1].toLowerCase()} de ${selectedYear} · comparación histórica`;
 
   capSub.textContent =
-    `Promedio diario · 2013-${previousYear} completos y ${selectedYear} hasta ${months[selectedMonth - 1].toLowerCase()}`;
+    `Promedio diario · ${firstDisplayedYear}-${previousYear} completos y ${selectedYear} hasta ${months[selectedMonth - 1].toLowerCase()}`;
 
   distSub.textContent =
     `Acumulado enero-${months[selectedMonth - 1].toLowerCase()} por año`;
