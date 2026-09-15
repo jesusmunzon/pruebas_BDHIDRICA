@@ -30,36 +30,38 @@ tbody td:nth-child(2){color:#0b5cab!important;font-weight:800!important}
   line-height:1.6!important;
 }
 
-/* =========================================================
-   ESTADO INCIDENCIA, COLORES DE HYDROSMART
-   ========================================================= */
-
-/* Estado normal */
-.statusBadge.incident {
-  color: #92400e !important;
-  background-color: #fef3c7 !important;
-  border: 1px solid #fcd34d !important;
-
-  transition:
-    background-color 0.18s ease,
-    border-color 0.18s ease,
-    box-shadow 0.18s ease !important;
-}
-
-/* Al pasar el ratón:
-   solo se oscurece ligeramente el fondo */
-.observationWrapper:hover .statusBadge.incident {
-  color: #92400e !important;
-  background-color: #fde68a !important;
-  border-color: #fbbf24 !important;
-  box-shadow: 0 3px 8px rgb(146 64 14 / 12%) !important;
-}
-
 /* El estado Normal permanece siempre igual */
 .statusBadge.normal,
 .observationWrapper:hover .statusBadge.normal {
   color: #18794e !important;
   background-color: #e8f8f0 !important;
   border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* =========================================================
+   ESTADO INCIDENCIA
+   ========================================================= */
+
+/* Apariencia habitual */
+table tbody td.statusCell .observationWrapper .statusBadge.incident {
+  color: rgb(146 64 14) !important;
+  background-color: rgb(254 243 199) !important;
+  border: 1px solid rgb(252 211 77) !important;
+
+  box-shadow: none !important;
+
+  transition:
+    background-color 0.18s ease,
+    border-color 0.18s ease !important;
+}
+
+/* Al pasar el ratón:
+   cambia únicamente el fondo y el borde */
+table tbody td.statusCell .observationWrapper:hover .statusBadge.incident {
+  color: rgb(146 64 14) !important;
+  background-color: rgb(253 230 138) !important;
+  border-color: rgb(251 191 36) !important;
+
   box-shadow: none !important;
 }
