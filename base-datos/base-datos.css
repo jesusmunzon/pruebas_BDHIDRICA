@@ -201,7 +201,19 @@ body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(n+5):nth-chi
 body:has(.tab[data-dataset="carnf"].active) #tableBody td:nth-child(n+5):nth-child(-n+14){width:155px;min-width:155px;max-width:155px}
 body:has(.tab[data-dataset="carnf"].active) #headRow th{white-space:normal;line-height:1.15;padding:9px 5px!important}
 body:has(.tab[data-dataset="carnf"].active) #headRow .sortButton{width:100%;justify-content:center;white-space:normal;text-align:center;line-height:1.15;font-size:15px!important;font-weight:800!important;color:#28465f!important}
-body:has(.tab[data-dataset="carnf"].active) #headRow .sortButton:has(br){font-size:12px!important}
+body:has(.tab[data-dataset="carnf"].active)
+#headRow .sortButton:has(br) {
+  font-size: 12px !important;
+}
+
+/* Código población y Consumos propios a 15 px */
+body:has(.tab[data-dataset="carnf"].active)
+#headRow th:nth-child(3) .sortButton,
+
+body:has(.tab[data-dataset="carnf"].active)
+#headRow th:nth-child(5) .sortButton {
+  font-size: 15px !important;
+}
 body:has(.tab[data-dataset="carnf"].active) #headRow .sortButton.active{color:var(--blue)!important}
 body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(9),
 body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(13){background-color:#cbd9e6!important}
