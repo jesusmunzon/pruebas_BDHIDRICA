@@ -211,19 +211,19 @@ const DATASETS = {
     ],
     labels: {
       "FECHA": "Fecha", "FECHA DATOS": "Fecha datos",
-      "COD POBLACIÓN": "Código población", "POBLACIÓN": "Población",
-      "CONSUMOS PROPIOS": "Consumos propios",
+      "COD POBLACIÓN": "Código<br>población", "POBLACIÓN": "Población",
+      "CONSUMOS PROPIOS": "Consumos<br>propios",
       "PURGAS CON CONTADOR AQUA-WS": "Purgas con contador<br>AQUA-WS",
       "RIEGOS Y BALDEO MUNICIPAL": "Riegos y baldeo<br>municipal",
       "ZONAS DEPRIMIDAS Y EVENTOS": "Zonas deprimidas<br>y eventos",
       "TOTAL AGUA REGISTRADA NO FACTURADA (ARNF)": "TOTAL AGUA REGISTRADA<br>NO FACTURADA (ARNF)",
       "MANTENIMIENTO (INTERVENCIONES DE REDES)": "Mantenimiento<br>(intervenciones de redes)",
-      "PURGAS SIN CONTADOR": "Purgas sin contador",
-      "PUNTOS MEDIDA CLORO": "Puntos medida cloro",
+      "PURGAS SIN CONTADOR": "Purgas sin<br>contador",
+      "PUNTOS MEDIDA CLORO": "Puntos medida<br>cloro",
       "TOTAL AGUA NO REGISTRADA NO FACTURADA (ANRNF)": "TOTAL AGUA NO REGISTRADA<br>NO FACTURADA (ANRNF)",
       "FUGAS EN INTERVENCIONES DE REDES (PÉRDIDAS EVITABLES)": "Fugas en intervenciones de redes<br>(pérdidas evitables)"
     },
-    numeric: ["COD POBLACIÓN", "TOTAL AGUA REGISTRADA NO FACTURADA (ARNF)", "TOTAL AGUA NO REGISTRADA NO FACTURADA (ANRNF)"],
+    numeric: ["CONSUMOS PROPIOS", "PURGAS CON CONTADOR AQUA-WS", "RIEGOS Y BALDEO MUNICIPAL", "ZONAS DEPRIMIDAS Y EVENTOS", "TOTAL AGUA REGISTRADA NO FACTURADA (ARNF)", "MANTENIMIENTO (INTERVENCIONES DE REDES)", "PURGAS SIN CONTADOR", "PUNTOS MEDIDA CLORO", "TOTAL AGUA NO REGISTRADA NO FACTURADA (ANRNF)", "FUGAS EN INTERVENCIONES DE REDES (PÉRDIDAS EVITABLES)"],
     notes: null,
     dateCols: ["FECHA", "FECHA DATOS"],
     totalCols: [
@@ -299,7 +299,7 @@ const num = (value, decimals = 2) => {
 };
 const isDateCol = (x) => x === "FECHA" || (cfg().dateCols || []).includes(x);
 function calculateTotal(row, c = cfg()) {
-  const totals = c.calculatedTotals || (c.totalCol ? [{ col: c.totalCol, sumCols: c.sumCols }] : []);
+  const totals = c.totalCols || c.calculatedTotals || (c.totalCol ? [{ col: c.totalCol, sumCols: c.sumCols }] : []);
   totals.forEach((total) => {
     const value = total.sumCols.reduce((sum, col) => {
       const n = Number(row[col]);
@@ -309,7 +309,7 @@ function calculateTotal(row, c = cfg()) {
   });
 }
 function isCalculatedCol(c, x) {
-  return x === c.totalCol || (c.calculatedTotals || []).some((t) => t.col === x);
+  return x === c.totalCol || (c.totalCols || c.calculatedTotals || []).some((t) => t.col === x);
 }
 function normalizeHeader(v) {
   return String(v ?? "")
@@ -356,7 +356,6 @@ function dirty() {
     longitud: "dirtyBadgeLongitud",
     chg: "dirtyBadgeChg",
     acucon: "dirtyBadgeAcucon",
-    carnf: "dirtyBadgeCarnf",
     carnf: "dirtyBadgeCarnf",
   };
   const b = $(badgeIds[activeKey]);
