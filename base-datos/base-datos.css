@@ -229,7 +229,7 @@ body:has(.tab[data-dataset="carnf"].active) #tableBody td:nth-child(1),
 body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(2),
 body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(2),
 body:has(.tab[data-dataset="carnf"].active) #tableBody td:nth-child(2) {
-  width: 160px;
-  min-width: 160px;
-  max-width: 160px;
+  width: 137px;
+  min-width: 137px;
+  max-width: 137px;
 }
