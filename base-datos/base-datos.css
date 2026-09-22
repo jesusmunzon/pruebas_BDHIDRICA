@@ -33,14 +33,13 @@ tbody td:nth-child(2){color:#0b5cab!important;font-weight:800!important}
 /* =========================================================
    ESTADO INCIDENCIA, ESTILO DEFINITIVO
    ========================================================= */
-
 /* Incidencia sin pasar el ratón */
-.statusCell .statusBadge.inci*ent {
-  color: rgb(146, 64, 14) !i*portant;
-  background: rgb(254, 24*, 199) !important;
-  background-co*or: rgb(254, 243, 199) !important;*  border: 1px solid rgb(252, 211, 77) !important;
+.statusCell .statusBadge.incident {
+  color: rgb(146, 64, 14) !important;
+  background: rgb(254, 243, 199) !important;
+  background-color: rgb(254, 243, 199) !important;
+  border: 1px solid rgb(252, 211, 77) !important;
   box-shadow: none !important;
-
   transition:
     background-color 0.18s ease,
     border-color 0.18s ease !important;
@@ -67,6 +66,7 @@ tbody td:nth-child(2){color:#0b5cab!important;font-weight:800!important}
   border-color: transparent !important;
   box-shadow: none !important;
 }
+
 /* Filtros avanzados de tabla */
 .monthFilterControl{display:flex;align-items:center;gap:5px;min-width:190px}.monthFilterControl input[type="month"]{flex:1;min-width:145px}.clearColumnFilter{width:34px;height:39px;border:1px solid var(--line);border-radius:7px;background:#fff;color:#66788a;font-size:18px;font-weight:700;line-height:1}.clearColumnFilter:hover{background:#fff0f1;border-color:#ffc9ce;color:var(--red)}.columnFilters select{width:100%;min-width:150px;height:39px;border:1px solid var(--line);border-radius:7px;padding:8px 28px 8px 10px;background:#fff;color:#334e68;font:600 13px Inter}.columnFilters input[type="month"]{height:39px;min-width:145px;padding:7px 8px;text-align:center;color:#334e68;font:600 13px Inter}
 .formGrid select{display:block;width:100%;margin-top:5px;border:1px solid var(--line);border-radius:8px;padding:10px;background:#fff;color:var(--ink)}.formGrid input[readonly]{background:#f1f5f9;color:#64748b;cursor:not-allowed}
@@ -209,3 +209,15 @@ body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(13){background
 .tableWrap thead th{position:static}
 .tableWrap #headRow th{height:76px}
 .tableWrap #filterRow th{height:55px}
+
+/* Datos CARNF: ancho de Fecha y Fecha datos igualado */
+body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(1),
+body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(1),
+body:has(.tab[data-dataset="carnf"].active) #tableBody td:nth-child(1),
+body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(2),
+body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(2),
+body:has(.tab[data-dataset="carnf"].active) #tableBody td:nth-child(2) {
+  width: 180px;
+  min-width: 180px;
+  max-width: 180px;
+}
