@@ -150,6 +150,88 @@ const DATASETS = {
       "AC_DIURNO OFICIAL",
     ],
   },
+  carnf: {
+    label: "Datos CARNF",
+    file: "tablas-excel/BD_Datos_CARNF.xlsx",
+    sheet: "Datos_CARNF",
+    download: "BD_Datos_CARNF_modificado.xlsx",
+    cols: [
+      "FECHA", "FECHA DATOS", "COD POBLACIÓN", "POBLACIÓN",
+      "CONSUMOS PROPIOS", "PURGAS CON CONTADOR AQUA-WS",
+      "RIEGOS Y BALDEO MUNICIPAL", "ZONAS DEPRIMIDAS Y EVENTOS",
+      "TOTAL AGUA REGISTRADA NO FACTURADA (ARNF)",
+      "MANTENIMIENTO (INTERVENCIONES DE REDES)", "PURGAS SIN CONTADOR",
+      "PUNTOS MEDIDA CLORO",
+      "TOTAL AGUA NO REGISTRADA NO FACTURADA (ANRNF)",
+      "FUGAS EN INTERVENCIONES DE REDES (PÉRDIDAS EVITABLES)"
+    ],
+    labels: {
+      "FECHA":"Fecha", "FECHA DATOS":"Fecha datos",
+      "COD POBLACIÓN":"Código población", "POBLACIÓN":"Población",
+      "CONSUMOS PROPIOS":"Consumos propios",
+      "PURGAS CON CONTADOR AQUA-WS":"Purgas con contador AQUA-WS",
+      "RIEGOS Y BALDEO MUNICIPAL":"Riegos y baldeo municipal",
+      "ZONAS DEPRIMIDAS Y EVENTOS":"Zonas deprimidas y eventos",
+      "TOTAL AGUA REGISTRADA NO FACTURADA (ARNF)":"TOTAL AGUA REGISTRADA<br>NO FACTURADA (ARNF)",
+      "MANTENIMIENTO (INTERVENCIONES DE REDES)":"Mantenimiento<br>(intervenciones de redes)",
+      "PURGAS SIN CONTADOR":"Purgas sin contador",
+      "PUNTOS MEDIDA CLORO":"Puntos medida cloro",
+      "TOTAL AGUA NO REGISTRADA NO FACTURADA (ANRNF)":"TOTAL AGUA NO REGISTRADA<br>NO FACTURADA (ANRNF)",
+      "FUGAS EN INTERVENCIONES DE REDES (PÉRDIDAS EVITABLES)":"Fugas en intervenciones de redes<br>(pérdidas evitables)"
+    },
+    numeric: [
+      "CONSUMOS PROPIOS", "PURGAS CON CONTADOR AQUA-WS",
+      "RIEGOS Y BALDEO MUNICIPAL", "ZONAS DEPRIMIDAS Y EVENTOS",
+      "TOTAL AGUA REGISTRADA NO FACTURADA (ARNF)",
+      "MANTENIMIENTO (INTERVENCIONES DE REDES)", "PURGAS SIN CONTADOR",
+      "PUNTOS MEDIDA CLORO",
+      "TOTAL AGUA NO REGISTRADA NO FACTURADA (ANRNF)",
+      "FUGAS EN INTERVENCIONES DE REDES (PÉRDIDAS EVITABLES)"
+    ],
+    notes: null,
+    dateCols: ["FECHA", "FECHA DATOS"],
+    calculatedTotals: [
+      { col: "TOTAL AGUA REGISTRADA NO FACTURADA (ARNF)", sumCols: ["CONSUMOS PROPIOS", "PURGAS CON CONTADOR AQUA-WS", "RIEGOS Y BALDEO MUNICIPAL", "ZONAS DEPRIMIDAS Y EVENTOS"] },
+      { col: "TOTAL AGUA NO REGISTRADA NO FACTURADA (ANRNF)", sumCols: ["MANTENIMIENTO (INTERVENCIONES DE REDES)", "PURGAS SIN CONTADOR", "PUNTOS MEDIDA CLORO"] }
+    ]
+  },
+  carnf: {
+    label: "Datos CARNF",
+    file: "tablas-excel/BD_Datos_CARNF.xlsx",
+    sheet: "Datos_CARNF",
+    download: "BD_Datos_CARNF_modificado.xlsx",
+    cols: [
+      "FECHA", "FECHA DATOS", "COD POBLACIÓN", "POBLACIÓN",
+      "CONSUMOS PROPIOS", "PURGAS CON CONTADOR AQUA-WS",
+      "RIEGOS Y BALDEO MUNICIPAL", "ZONAS DEPRIMIDAS Y EVENTOS",
+      "TOTAL AGUA REGISTRADA NO FACTURADA (ARNF)",
+      "MANTENIMIENTO (INTERVENCIONES DE REDES)", "PURGAS SIN CONTADOR",
+      "PUNTOS MEDIDA CLORO", "TOTAL AGUA NO REGISTRADA NO FACTURADA (ANRNF)",
+      "FUGAS EN INTERVENCIONES DE REDES (PÉRDIDAS EVITABLES)"
+    ],
+    labels: {
+      "FECHA": "Fecha", "FECHA DATOS": "Fecha datos",
+      "COD POBLACIÓN": "Código población", "POBLACIÓN": "Población",
+      "CONSUMOS PROPIOS": "Consumos propios",
+      "PURGAS CON CONTADOR AQUA-WS": "Purgas con contador<br>AQUA-WS",
+      "RIEGOS Y BALDEO MUNICIPAL": "Riegos y baldeo<br>municipal",
+      "ZONAS DEPRIMIDAS Y EVENTOS": "Zonas deprimidas<br>y eventos",
+      "TOTAL AGUA REGISTRADA NO FACTURADA (ARNF)": "TOTAL AGUA REGISTRADA<br>NO FACTURADA (ARNF)",
+      "MANTENIMIENTO (INTERVENCIONES DE REDES)": "Mantenimiento<br>(intervenciones de redes)",
+      "PURGAS SIN CONTADOR": "Purgas sin contador",
+      "PUNTOS MEDIDA CLORO": "Puntos medida cloro",
+      "TOTAL AGUA NO REGISTRADA NO FACTURADA (ANRNF)": "TOTAL AGUA NO REGISTRADA<br>NO FACTURADA (ANRNF)",
+      "FUGAS EN INTERVENCIONES DE REDES (PÉRDIDAS EVITABLES)": "Fugas en intervenciones de redes<br>(pérdidas evitables)"
+    },
+    numeric: ["COD POBLACIÓN", "TOTAL AGUA REGISTRADA NO FACTURADA (ARNF)", "TOTAL AGUA NO REGISTRADA NO FACTURADA (ANRNF)"],
+    notes: null,
+    dateCols: ["FECHA", "FECHA DATOS"],
+    totalCols: [
+      { col: "TOTAL AGUA REGISTRADA NO FACTURADA (ARNF)", sumCols: ["CONSUMOS PROPIOS", "PURGAS CON CONTADOR AQUA-WS", "RIEGOS Y BALDEO MUNICIPAL", "ZONAS DEPRIMIDAS Y EVENTOS"] },
+      { col: "TOTAL AGUA NO REGISTRADA NO FACTURADA (ANRNF)", sumCols: ["MANTENIMIENTO (INTERVENCIONES DE REDES)", "PURGAS SIN CONTADOR", "PUNTOS MEDIDA CLORO"] }
+    ],
+    sumCols: ["CONSUMOS PROPIOS", "PURGAS CON CONTADOR AQUA-WS", "RIEGOS Y BALDEO MUNICIPAL", "ZONAS DEPRIMIDAS Y EVENTOS", "MANTENIMIENTO (INTERVENCIONES DE REDES)", "PURGAS SIN CONTADOR", "PUNTOS MEDIDA CLORO", "FUGAS EN INTERVENCIONES DE REDES (PÉRDIDAS EVITABLES)"]
+  },
 };
 let activeKey = "balance",
   rows = [],
@@ -164,6 +246,8 @@ const stores = {
     longitud: { rows: null, changes: 0 },
     chg: { rows: null, changes: 0, lookup: [], info: [] },
     acucon: { rows: null, changes: 0 },
+    carnf: { rows: null, changes: 0 },
+    carnf: { rows: null, changes: 0 },
   },
   $ = (id) => document.getElementById(id),
   cfg = () => DATASETS[activeKey];
@@ -215,18 +299,24 @@ const num = (value, decimals = 2) => {
 };
 const isDateCol = (x) => x === "FECHA" || (cfg().dateCols || []).includes(x);
 function calculateTotal(row, c = cfg()) {
-  if (!c.totalCol) return;
-  row[c.totalCol] = c.sumCols.reduce((sum, col) => {
-    const n = Number(row[col]);
-    return sum + (Number.isFinite(n) ? n : 0);
-  }, 0);
+  const totals = c.calculatedTotals || (c.totalCol ? [{ col: c.totalCol, sumCols: c.sumCols }] : []);
+  totals.forEach((total) => {
+    const value = total.sumCols.reduce((sum, col) => {
+      const n = Number(row[col]);
+      return sum + (Number.isFinite(n) ? n : 0);
+    }, 0);
+    row[total.col] = Math.round((value + Number.EPSILON) * 100) / 100;
+  });
+}
+function isCalculatedCol(c, x) {
+  return x === c.totalCol || (c.calculatedTotals || []).some((t) => t.col === x);
 }
 function normalizeHeader(v) {
   return String(v ?? "")
     .replace(/\s+/g, " ")
     .trim();
 }
-function acuconRowsFromSheet(ws, c) {
+function calculatedRowsFromSheet(ws, c) {
   const data = XLSX.utils.sheet_to_json(ws, {
       header: 1,
       defval: "",
@@ -240,9 +330,9 @@ function acuconRowsFromSheet(ws, c) {
     .map((a, i) => {
       const o = { _id: i + 1 };
       c.cols.forEach((x) => {
-        const v = a[index.get(x)];
+        const v = a[index.get(normalizeHeader(x))];
         if (c.dateCols.includes(x)) o[x] = excelDate(v);
-        else if (c.sumCols.includes(x)) {
+        else if (c.numeric.includes(x) && !isCalculatedCol(c, x)) {
           const n = Number(v);
           o[x] =
             v === "" ? "" : Number.isFinite(n) ? n : String(v ?? "").trim();
@@ -266,6 +356,8 @@ function dirty() {
     longitud: "dirtyBadgeLongitud",
     chg: "dirtyBadgeChg",
     acucon: "dirtyBadgeAcucon",
+    carnf: "dirtyBadgeCarnf",
+    carnf: "dirtyBadgeCarnf",
   };
   const b = $(badgeIds[activeKey]);
   b.hidden = false;
@@ -425,7 +517,7 @@ function render() {
     list
       .map(
         (r) =>
-          `<tr>${c.cols.map((x) => (x === c.notes ? `<td class="statusCell">${noteCell(r[x])}</td>` : isDateCol(x) ? `<td>${displayDate(r[x])}</td>` : c.numeric.includes(x) || (activeKey === "acucon" && c.sumCols?.includes(x)) ? `<td>${num(r[x], activeKey === "red" && x === "ID" ? 0 : 2)}</td>` : `<td>${esc(r[x])}</td>`)).join("")}<td class="actions"><button class="iconAction edit" onclick="openEdit(${r._id})" title="Editar"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L8 18l-4 1 1-4Z"/></svg></button><button class="iconAction delete" onclick="removeRow(${r._id})" title="Eliminar"><svg viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v5M14 11v5"/></svg></button></td></tr>`,
+          `<tr>${c.cols.map((x) => (x === c.notes ? `<td class="statusCell">${noteCell(r[x])}</td>` : isDateCol(x) ? `<td>${displayDate(r[x])}</td>` : c.numeric.includes(x) || (c.sumCols?.includes(x)) ? `<td>${num(r[x], activeKey === "red" && x === "ID" ? 0 : 2)}</td>` : `<td>${esc(r[x])}</td>`)).join("")}<td class="actions"><button class="iconAction edit" onclick="openEdit(${r._id})" title="Editar"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L8 18l-4 1 1-4Z"/></svg></button><button class="iconAction delete" onclick="removeRow(${r._id})" title="Eliminar"><svg viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v5M14 11v5"/></svg></button></td></tr>`,
       )
       .join("") ||
     `<tr><td colspan="${c.cols.length + 1}">Sin resultados</td></tr>`;
@@ -466,11 +558,11 @@ function openEdit(id) {
         ].sort((a, b) => a.localeCompare(b, "es"));
         return `<label>${c.labels[x]}<select name="${x}"><option value="">Seleccionar población...</option>${values.map((v) => `<option value="${esc(v)}" ${v === String(r[x] ?? "") ? "selected" : ""}>${esc(v)}</option>`).join("")}</select></label>`;
       }
-      if (c.totalCol && x === c.totalCol)
+      if (isCalculatedCol(c, x))
         return `<label>${c.labels[x]}<input name="${x}" type="text" value="${esc(num(r[x]))}" readonly></label>`;
       if (activeKey === "chg" && x === "Referencia")
         return `<label>${c.labels[x]}<input name="${x}" type="text" value="${esc(r[x])}" readonly title="Se calcula automáticamente desde Poblaciones y referencias"></label>`;
-      return `<label class="${x === c.notes ? "full" : ""}">${c.labels[x]}${x === c.notes ? `<textarea name="${x}">${esc(r[x])}</textarea>` : `<input name="${x}" type="${isDateCol(x) ? "date" : activeKey === "acucon" && c.sumCols?.includes(x) ? "text" : c.numeric.includes(x) ? "number" : "text"}" step="any" value="${esc(r[x])}">`}</label>`;
+      return `<label class="${x === c.notes ? "full" : ""}">${c.labels[x]}${x === c.notes ? `<textarea name="${x}">${esc(r[x])}</textarea>` : `<input name="${x}" type="${isDateCol(x) ? "date" : c.sumCols?.includes(x) ? "text" : c.numeric.includes(x) ? "number" : "text"}" step="any" value="${esc(r[x])}">`}</label>`;
     })
     .join("");
   const populationSelect = $("editFields").querySelector(
@@ -495,17 +587,18 @@ function saveEdit(e) {
     fd = new FormData($("editDialog").querySelector("form")),
     o = {};
   c.cols.forEach((x) => {
-    if (c.totalCol && x === c.totalCol) return;
+    if (isCalculatedCol(c, x)) return;
     const raw = String(fd.get(x) ?? "").trim();
-    if (activeKey === "acucon" && c.sumCols?.includes(x)) {
+    if (c.sumCols?.includes(x)) {
       const n = Number(raw.replace(",", "."));
       o[x] = raw === "" ? "" : Number.isFinite(n) ? n : raw;
     } else {
-      o[x] = c.numeric.includes(x) ? Number(raw || 0) : raw;
+      const normalizedNumber = raw.replace(",", ".");
+      o[x] = c.numeric.includes(x) ? Number(normalizedNumber || 0) : raw;
     }
     if (isDateCol(x)) o[x] = excelDate(o[x]);
   });
-  if (c.totalCol) calculateTotal(o, c);
+  if (c.totalCol || c.calculatedTotals) calculateTotal(o, c);
   if (activeKey === "chg") {
     if (!o["Año"]) return toast("El año es obligatorio");
     if (!o["POBLACIÓN"]) return toast("Selecciona una población");
@@ -596,7 +689,7 @@ function saveExcel() {
     return;
   }
   const data = rows.map((r) => {
-    if (c.totalCol) calculateTotal(r, c);
+    if (c.totalCol || c.calculatedTotals) calculateTotal(r, c);
     return Object.fromEntries(
       c.cols.map((x) => [
         x,
@@ -634,7 +727,7 @@ async function switchDataset(key) {
     .forEach((b) => b.classList.toggle("active", b.dataset.dataset === key));
   page = 1;
   sortColumn =
-    key === "chg" ? "Año" : key === "acucon" ? "FECHA DATOS" : "FECHA";
+    key === "chg" ? "Año" : (key === "acucon" || key === "carnf") ? "FECHA DATOS" : "FECHA";
   sortDirection = "asc";
   $("globalFilter").value = "";
   $("rowCount").textContent = "Cargando…";
@@ -655,9 +748,9 @@ async function switchDataset(key) {
         cellDates: true,
       }),
       ws = wb.Sheets[c.sheet] || wb.Sheets[wb.SheetNames[0]];
-    if (key === "acucon") {
-      rows = acuconRowsFromSheet(ws, c);
-      stores.acucon.rows = rows;
+    if (key === "acucon" || key === "carnf") {
+      rows = calculatedRowsFromSheet(ws, c);
+      stores[key].rows = rows;
     } else if (key === "chg") {
       const a = XLSX.utils.sheet_to_json(ws, {
         header: 1,

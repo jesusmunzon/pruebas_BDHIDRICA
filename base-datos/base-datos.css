@@ -190,3 +190,22 @@ body:has(.tab[data-dataset="acucon"].active)
   #headRow th:nth-child(17) {
   background-color: #cbd9e6 !important;
 }
+/* Datos CARNF */
+body:has(.tab[data-dataset="carnf"].active) .tableWrap table{min-width:2500px}
+body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(n+5):nth-child(-n+14),
+body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(n+5):nth-child(-n+14),
+body:has(.tab[data-dataset="carnf"].active) #tableBody td:nth-child(n+5):nth-child(-n+14){width:155px;min-width:155px;max-width:155px}
+body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(n+5):nth-child(-n+14){white-space:normal;line-height:1.15;padding:9px 5px!important}
+body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(n+5):nth-child(-n+14) .sortButton{width:100%;justify-content:center;white-space:normal;text-align:center;line-height:1.15;font-size:12px!important}
+body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(9),
+body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(13){background-color:#cbd9e6!important}
+
+/* Datos CARNF */
+body:has(.tab[data-dataset="carnf"].active) .tableWrap table{min-width:2350px}
+body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(n+5):nth-child(-n+14),
+body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(n+5):nth-child(-n+14),
+body:has(.tab[data-dataset="carnf"].active) #tableBody td:nth-child(n+5):nth-child(-n+14){width:150px;min-width:150px;max-width:150px}
+body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(n+5):nth-child(-n+14){white-space:normal;line-height:1.15;padding:9px 5px!important}
+body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(n+5):nth-child(-n+14) .sortButton{width:100%;justify-content:center;white-space:normal;text-align:center;line-height:1.15;font-size:12px!important}
+body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(9),
+body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(13){background-color:#cbd9e6!important}
