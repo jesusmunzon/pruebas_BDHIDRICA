@@ -176,3 +176,11 @@ tbody td:nth-child(2){color:#0b5cab!important;font-weight:800!important}
   }
 }
 /* CHG_LAYOUT_FINAL_END */
+
+/* ACUCON table sizing */
+.tab[data-dataset="acucon"] { white-space: nowrap; }
+body:has(.tab[data-dataset="acucon"].active) .tableWrap table { min-width: 2850px; }
+body:has(.tab[data-dataset="acucon"].active) #headRow th:nth-child(4),
+body:has(.tab[data-dataset="acucon"].active) #filterRow th:nth-child(4) { min-width: 360px; }
+body:has(.tab[data-dataset="acucon"].active) #headRow th:last-child,
+body:has(.tab[data-dataset="acucon"].active) #filterRow th:last-child { min-width: 110px; }
