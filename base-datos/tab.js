@@ -161,6 +161,51 @@ const DATASETS = {
       "RIEGOS Y BALDEO MUNICIPAL", "ZONAS DEPRIMIDAS Y EVENTOS",
       "TOTAL AGUA REGISTRADA NO FACTURADA (ARNF)",
       "MANTENIMIENTO (INTERVENCIONES DE REDES)", "PURGAS SIN CONTADOR",
+      "PUNTOS MEDIDA CLORO",
+      "TOTAL AGUA NO REGISTRADA NO FACTURADA (ANRNF)",
+      "FUGAS EN INTERVENCIONES DE REDES (PÉRDIDAS EVITABLES)"
+    ],
+    labels: {
+      "FECHA":"Fecha", "FECHA DATOS":"Fecha datos",
+      "COD POBLACIÓN":"Código población", "POBLACIÓN":"Población",
+      "CONSUMOS PROPIOS":"Consumos propios",
+      "PURGAS CON CONTADOR AQUA-WS":"Purgas con contador AQUA-WS",
+      "RIEGOS Y BALDEO MUNICIPAL":"Riegos y baldeo municipal",
+      "ZONAS DEPRIMIDAS Y EVENTOS":"Zonas deprimidas y eventos",
+      "TOTAL AGUA REGISTRADA NO FACTURADA (ARNF)":"TOTAL AGUA REGISTRADA<br>NO FACTURADA (ARNF)",
+      "MANTENIMIENTO (INTERVENCIONES DE REDES)":"Mantenimiento<br>(intervenciones de redes)",
+      "PURGAS SIN CONTADOR":"Purgas sin contador",
+      "PUNTOS MEDIDA CLORO":"Puntos medida cloro",
+      "TOTAL AGUA NO REGISTRADA NO FACTURADA (ANRNF)":"TOTAL AGUA NO REGISTRADA<br>NO FACTURADA (ANRNF)",
+      "FUGAS EN INTERVENCIONES DE REDES (PÉRDIDAS EVITABLES)":"Fugas en intervenciones de redes<br>(pérdidas evitables)"
+    },
+    numeric: [
+      "CONSUMOS PROPIOS", "PURGAS CON CONTADOR AQUA-WS",
+      "RIEGOS Y BALDEO MUNICIPAL", "ZONAS DEPRIMIDAS Y EVENTOS",
+      "TOTAL AGUA REGISTRADA NO FACTURADA (ARNF)",
+      "MANTENIMIENTO (INTERVENCIONES DE REDES)", "PURGAS SIN CONTADOR",
+      "PUNTOS MEDIDA CLORO",
+      "TOTAL AGUA NO REGISTRADA NO FACTURADA (ANRNF)",
+      "FUGAS EN INTERVENCIONES DE REDES (PÉRDIDAS EVITABLES)"
+    ],
+    notes: null,
+    dateCols: ["FECHA", "FECHA DATOS"],
+    calculatedTotals: [
+      { col: "TOTAL AGUA REGISTRADA NO FACTURADA (ARNF)", sumCols: ["CONSUMOS PROPIOS", "PURGAS CON CONTADOR AQUA-WS", "RIEGOS Y BALDEO MUNICIPAL", "ZONAS DEPRIMIDAS Y EVENTOS"] },
+      { col: "TOTAL AGUA NO REGISTRADA NO FACTURADA (ANRNF)", sumCols: ["MANTENIMIENTO (INTERVENCIONES DE REDES)", "PURGAS SIN CONTADOR", "PUNTOS MEDIDA CLORO"] }
+    ]
+  },
+  carnf: {
+    label: "Datos CARNF",
+    file: "tablas-excel/BD_Datos_CARNF.xlsx",
+    sheet: "Datos_CARNF",
+    download: "BD_Datos_CARNF_modificado.xlsx",
+    cols: [
+      "FECHA", "FECHA DATOS", "COD POBLACIÓN", "POBLACIÓN",
+      "CONSUMOS PROPIOS", "PURGAS CON CONTADOR AQUA-WS",
+      "RIEGOS Y BALDEO MUNICIPAL", "ZONAS DEPRIMIDAS Y EVENTOS",
+      "TOTAL AGUA REGISTRADA NO FACTURADA (ARNF)",
+      "MANTENIMIENTO (INTERVENCIONES DE REDES)", "PURGAS SIN CONTADOR",
       "PUNTOS MEDIDA CLORO", "TOTAL AGUA NO REGISTRADA NO FACTURADA (ANRNF)",
       "FUGAS EN INTERVENCIONES DE REDES (PÉRDIDAS EVITABLES)"
     ],
@@ -181,7 +226,7 @@ const DATASETS = {
     numeric: ["COD POBLACIÓN", "TOTAL AGUA REGISTRADA NO FACTURADA (ARNF)", "TOTAL AGUA NO REGISTRADA NO FACTURADA (ANRNF)"],
     notes: null,
     dateCols: ["FECHA", "FECHA DATOS"],
-    calculatedTotals: [
+    totalCols: [
       { col: "TOTAL AGUA REGISTRADA NO FACTURADA (ARNF)", sumCols: ["CONSUMOS PROPIOS", "PURGAS CON CONTADOR AQUA-WS", "RIEGOS Y BALDEO MUNICIPAL", "ZONAS DEPRIMIDAS Y EVENTOS"] },
       { col: "TOTAL AGUA NO REGISTRADA NO FACTURADA (ANRNF)", sumCols: ["MANTENIMIENTO (INTERVENCIONES DE REDES)", "PURGAS SIN CONTADOR", "PUNTOS MEDIDA CLORO"] }
     ],
@@ -201,6 +246,7 @@ const stores = {
     longitud: { rows: null, changes: 0 },
     chg: { rows: null, changes: 0, lookup: [], info: [] },
     acucon: { rows: null, changes: 0 },
+    carnf: { rows: null, changes: 0 },
     carnf: { rows: null, changes: 0 },
   },
   $ = (id) => document.getElementById(id),
@@ -310,6 +356,7 @@ function dirty() {
     longitud: "dirtyBadgeLongitud",
     chg: "dirtyBadgeChg",
     acucon: "dirtyBadgeAcucon",
+    carnf: "dirtyBadgeCarnf",
     carnf: "dirtyBadgeCarnf",
   };
   const b = $(badgeIds[activeKey]);
@@ -515,7 +562,7 @@ function openEdit(id) {
         return `<label>${c.labels[x]}<input name="${x}" type="text" value="${esc(num(r[x]))}" readonly></label>`;
       if (activeKey === "chg" && x === "Referencia")
         return `<label>${c.labels[x]}<input name="${x}" type="text" value="${esc(r[x])}" readonly title="Se calcula automáticamente desde Poblaciones y referencias"></label>`;
-      return `<label class="${x === c.notes ? "full" : ""}">${c.labels[x]}${x === c.notes ? `<textarea name="${x}">${esc(r[x])}</textarea>` : `<input name="${x}" type="${isDateCol(x) ? "date" : (c.sumCols?.includes(x) || c.numeric.includes(x)) ? "number" : "text"}" step="any" value="${esc(r[x])}">`}</label>`;
+      return `<label class="${x === c.notes ? "full" : ""}">${c.labels[x]}${x === c.notes ? `<textarea name="${x}">${esc(r[x])}</textarea>` : `<input name="${x}" type="${isDateCol(x) ? "date" : c.sumCols?.includes(x) ? "text" : c.numeric.includes(x) ? "number" : "text"}" step="any" value="${esc(r[x])}">`}</label>`;
     })
     .join("");
   const populationSelect = $("editFields").querySelector(
