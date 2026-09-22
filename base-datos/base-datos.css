@@ -214,7 +214,7 @@ body:has(.tab[data-dataset="carnf"].active)
 #headRow th:nth-child(5) .sortButton {
   font-size: 15px !important;
 }
-body:has(.tab[data-dataset="carnf"].active) #headRow .sortButton.active{color:var(--blue)!important}
+body:has(.tab[data-dataset="carnf"].active) #headRow .sortButton.active{color:#0f5fbf !important}
 body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(9),
 body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(13){background-color:#cbd9e6!important}
 .tableWrap thead{position:sticky;top:0;z-index:20}
