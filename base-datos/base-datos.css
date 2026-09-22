@@ -184,3 +184,47 @@ body:has(.tab[data-dataset="acucon"].active) #tableBody td:nth-child(4){white-sp
 body:has(.tab[data-dataset="acucon"].active) #headRow th:nth-child(n+5):nth-child(-n+17),body:has(.tab[data-dataset="acucon"].active) #filterRow th:nth-child(n+5):nth-child(-n+17),body:has(.tab[data-dataset="acucon"].active) #tableBody td:nth-child(n+5):nth-child(-n+17){width:128px;min-width:128px;max-width:128px}
 body:has(.tab[data-dataset="acucon"].active) #headRow th:nth-child(n+5):nth-child(-n+17){white-space:normal;line-height:1.15;padding:9px 5px!important}
 body:has(.tab[data-dataset="acucon"].active) #headRow th:nth-child(n+5):nth-child(-n+17) .sortButton{width:100%;justify-content:center;white-space:normal;text-align:center;line-height:1.15;font-size:12px!important}
+
+/* Datos ACUCON: destacar la columna TOTAL AC+CP */
+
+/* Cabecera */
+body:has(.tab[data-dataset="acucon"].active)
+  #headRow th:nth-child(17) {
+  background: #dbeafe !important;
+  color: #0b5cab !important;
+  border-left: 2px solid #1677ff !important;
+  border-right: 2px solid #1677ff !important;
+}
+
+/* Botón de ordenación de la cabecera */
+body:has(.tab[data-dataset="acucon"].active)
+  #headRow th:nth-child(17)
+  .sortButton {
+  color: #0b5cab !important;
+  font-weight: 800 !important;
+}
+
+/* Filtro de la columna */
+body:has(.tab[data-dataset="acucon"].active)
+  #filterRow th:nth-child(17) {
+  background: #eff6ff !important;
+  border-left: 2px solid #1677ff !important;
+  border-right: 2px solid #1677ff !important;
+}
+
+/* Celdas con los totales */
+body:has(.tab[data-dataset="acucon"].active)
+  #tableBody td:nth-child(17) {
+  background: #f0f7ff !important;
+  color: #0b5cab !important;
+  font-weight: 800 !important;
+  border-left: 2px solid #1677ff !important;
+  border-right: 2px solid #1677ff !important;
+}
+
+/* Efecto al pasar el ratón por una fila */
+body:has(.tab[data-dataset="acucon"].active)
+  #tableBody tr:hover
+  td:nth-child(17) {
+  background: #dbeafe !important;
+}
