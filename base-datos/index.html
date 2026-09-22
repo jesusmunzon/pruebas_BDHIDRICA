@@ -6,7 +6,47 @@
   <title>
    Base de datos · Control de Red
   </title>
-  <link href="base-datos.css" rel="stylesheet"/>
+  <link href="base-datos.css?v=20260922-1137" rel="stylesheet"/>
+  <style id="chg-critical-layout">
+   #chgInfoPanel.chgAuxGrid:not([hidden]) {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 18px !important;
+  width: 100% !important;
+  margin-top: 14px !important;
+}
+#chgInfoPanel.chgAuxGrid > .infoPanel {
+  flex: 1 1 0 !important;
+  width: calc(50% - 9px) !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  background: #fff !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 7px 24px rgba(16,42,67,.06) !important;
+  overflow: hidden !important;
+}
+#chgInfoPanel .infoPanelHead {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  padding: 15px 16px !important;
+  background: #fff !important;
+  border-bottom: 1px solid var(--line) !important;
+}
+#chgInfoPanel .infoPanelHead h2 { margin: 0 !important; font-size: 18px !important; }
+#chgInfoPanel .infoTableWrap { max-height: 500px !important; overflow: auto !important; }
+#chgInfoPanel .infoTable { width: 100% !important; min-width: 520px !important; border-collapse: separate !important; border-spacing: 0 !important; }
+#chgInfoPanel .infoTable th { background: #eaf1f7 !important; color: #38556d !important; text-align: center !important; font-size: 13px !important; font-weight: 800 !important; padding: 12px 9px !important; border-bottom: 1px solid #dce6ee !important; }
+#chgInfoPanel .infoTable td { background: #fff !important; color: var(--ink) !important; text-align: center !important; font-size: 12px !important; padding: 9px !important; border-bottom: 1px solid #edf1f5 !important; }
+#chgInfoPanel .infoTable tbody tr:hover td { background: #f4f9ff !important; }
+@media (max-width: 900px) {
+  #chgInfoPanel.chgAuxGrid:not([hidden]) { flex-direction: column !important; }
+  #chgInfoPanel.chgAuxGrid > .infoPanel { width: 100% !important; }
+}
+  </style>
  </head>
  <body>
   <aside class="sidebar">
@@ -306,7 +346,7 @@
   </div>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js">
   </script>
-  <script src="tab.js">
+  <script src="tab.js?v=20260922-1137">
   </script>
  </body>
 </html>
