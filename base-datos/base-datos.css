@@ -233,40 +233,15 @@ body:has(.tab[data-dataset="carnf"].active) #tableBody td:nth-child(2) {
   min-width: 160px;
   max-width: 160px;
 }
+/* AJUSTE CARNF: Población y Acciones */
 
-/* AJUSTE FINAL CARNF: fechas y filtro Población */
-
-/* Fecha y Fecha datos: exactamente el mismo ancho en ACUCON y CARNF */
-body:has(.tab[data-dataset="acucon"].active) #headRow th:nth-child(1),
-body:has(.tab[data-dataset="acucon"].active) #filterRow th:nth-child(1),
-body:has(.tab[data-dataset="acucon"].active) #tableBody td:nth-child(1),
-body:has(.tab[data-dataset="acucon"].active) #headRow th:nth-child(2),
-body:has(.tab[data-dataset="acucon"].active) #filterRow th:nth-child(2),
-body:has(.tab[data-dataset="acucon"].active) #tableBody td:nth-child(2),
-body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(1),
-body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(1),
-body:has(.tab[data-dataset="carnf"].active) #tableBody td:nth-child(1),
-body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(2),
-body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(2),
-body:has(.tab[data-dataset="carnf"].active) #tableBody td:nth-child(2) {
-  width: 160px !important;
-  min-width: 160px !important;
-  max-width: 160px !important;
-}
-
-/* Datos CARNF: ancho estable para la columna Población */
+/* Población: ancho más contenido para evitar un filtro excesivamente grande */
 body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(4),
 body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(4),
 body:has(.tab[data-dataset="carnf"].active) #tableBody td:nth-child(4) {
-  width: 320px !important;
-  min-width: 320px !important;
-  max-width: 320px !important;
-}
-
-/* Evita que el campo Filtrar de Población se ensanche o invada otras columnas */
-body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(4) {
-  padding: 8px 6px !important;
-  overflow: hidden !important;
+  width: 260px !important;
+  min-width: 260px !important;
+  max-width: 260px !important;
 }
 
 body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(4) input {
@@ -276,4 +251,13 @@ body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(4) input {
   min-width: 0 !important;
   max-width: 100% !important;
   margin: 0 !important;
+}
+
+/* Acciones: mismo ancho compacto utilizado en Datos ACUCON */
+body:has(.tab[data-dataset="carnf"].active) #headRow th:last-child,
+body:has(.tab[data-dataset="carnf"].active) #filterRow th:last-child,
+body:has(.tab[data-dataset="carnf"].active) #tableBody td.actions {
+  width: 104px !important;
+  min-width: 104px !important;
+  max-width: 104px !important;
 }
