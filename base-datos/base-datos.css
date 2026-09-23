@@ -233,17 +233,22 @@ body:has(.tab[data-dataset="carnf"].active) #tableBody td:nth-child(2) {
   min-width: 160px;
   max-width: 160px;
 }
-/* AJUSTE CARNF: Población y Acciones */
+/* IGUALAR ANCHOS ENTRE DATOS ACUCON Y DATOS CARNF */
 
-/* Población: ancho más contenido para evitar un filtro excesivamente grande */
+/* Poblacion: columna 3 en ACUCON y columna 4 en CARNF */
+body:has(.tab[data-dataset="acucon"].active) #headRow th:nth-child(3),
+body:has(.tab[data-dataset="acucon"].active) #filterRow th:nth-child(3),
+body:has(.tab[data-dataset="acucon"].active) #tableBody td:nth-child(3),
 body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(4),
 body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(4),
 body:has(.tab[data-dataset="carnf"].active) #tableBody td:nth-child(4) {
-  width: 260px !important;
-  min-width: 260px !important;
-  max-width: 260px !important;
+  width: 200px !important;
+  min-width: 200px !important;
+  max-width: 200px !important;
 }
 
+/* El filtro de Poblacion queda contenido dentro de la columna */
+body:has(.tab[data-dataset="acucon"].active) #filterRow th:nth-child(3) input,
 body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(4) input {
   display: block !important;
   box-sizing: border-box !important;
@@ -253,10 +258,13 @@ body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(4) input {
   margin: 0 !important;
 }
 
-/* Acciones: mismo ancho compacto utilizado en Datos ACUCON */
+/* Acciones: mismo ancho en ACUCON y CARNF */
+body:has(.tab[data-dataset="acucon"].active) #headRow th:last-child,
+body:has(.tab[data-dataset="acucon"].active) #filterRow th:last-child,
+body:has(.tab[data-dataset="acucon"].active) #tableBody td:last-child,
 body:has(.tab[data-dataset="carnf"].active) #headRow th:last-child,
 body:has(.tab[data-dataset="carnf"].active) #filterRow th:last-child,
-body:has(.tab[data-dataset="carnf"].active) #tableBody td.actions {
+body:has(.tab[data-dataset="carnf"].active) #tableBody td:last-child {
   width: 104px !important;
   min-width: 104px !important;
   max-width: 104px !important;
