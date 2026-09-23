@@ -232,6 +232,43 @@ const DATASETS = {
     ],
     sumCols: ["CONSUMOS PROPIOS", "PURGAS CON CONTADOR AQUA-WS", "RIEGOS Y BALDEO MUNICIPAL", "ZONAS DEPRIMIDAS Y EVENTOS", "MANTENIMIENTO (INTERVENCIONES DE REDES)", "PURGAS SIN CONTADOR", "PUNTOS MEDIDA CLORO", "FUGAS EN INTERVENCIONES DE REDES (PÉRDIDAS EVITABLES)"]
   },
+  aforos: {
+    label: "Datos Aforos y Pérdidas",
+    file: "tablas-excel/BD_Datos_Aforos_y_Perdidas.xlsx",
+    sheet: "Datos_Aforos_y_Perdidas",
+    download: "BD_Datos_Aforos_y_Perdidas_modificado.xlsx",
+    cols: [
+      "FECHA",
+      "FECHA DATOS",
+      "COD POBLACIÓN",
+      "POBLACIÓN",
+      "AFOROS NO Registrado Facturado (Bastones)",
+      "AFOROS NO Registrado NO Facturado",
+      "PÉRDIDAS APARENTES (%)",
+      "PÉRDIDAS APARENTES (Imprecisión)",
+      "Perdidas Tecnicas Mínimas (UARL) (Pérd. Reales)"
+    ],
+    labels: {
+      "FECHA": "Fecha",
+      "FECHA DATOS": "Fecha datos",
+      "COD POBLACIÓN": "Código<br>población",
+      "POBLACIÓN": "Población",
+      "AFOROS NO Registrado Facturado (Bastones)": "Aforos no registrado<br>facturado (Bastones)",
+      "AFOROS NO Registrado NO Facturado": "Aforos no registrado<br>no facturado",
+      "PÉRDIDAS APARENTES (%)": "Pérdidas aparentes<br>(%)",
+      "PÉRDIDAS APARENTES (Imprecisión)": "Pérdidas aparentes<br>(Imprecisión)",
+      "Perdidas Tecnicas Mínimas (UARL) (Pérd. Reales)": "Pérdidas técnicas mínimas (UARL)<br>(Pérd. reales)"
+    },
+    numeric: [
+      "AFOROS NO Registrado Facturado (Bastones)",
+      "AFOROS NO Registrado NO Facturado",
+      "PÉRDIDAS APARENTES (%)",
+      "PÉRDIDAS APARENTES (Imprecisión)",
+      "Perdidas Tecnicas Mínimas (UARL) (Pérd. Reales)"
+    ],
+    notes: null,
+    dateCols: ["FECHA", "FECHA DATOS"]
+  },
 };
 let activeKey = "balance",
   rows = [],
@@ -247,6 +284,7 @@ const stores = {
     chg: { rows: null, changes: 0, lookup: [], info: [] },
     acucon: { rows: null, changes: 0 },
     carnf: { rows: null, changes: 0 },
+    aforos: { rows: null, changes: 0 },
     carnf: { rows: null, changes: 0 },
   },
   $ = (id) => document.getElementById(id),
@@ -357,6 +395,7 @@ function dirty() {
     chg: "dirtyBadgeChg",
     acucon: "dirtyBadgeAcucon",
     carnf: "dirtyBadgeCarnf",
+    aforos: "dirtyBadgeAforos",
   };
   const b = $(badgeIds[activeKey]);
   b.hidden = false;
@@ -747,7 +786,7 @@ async function switchDataset(key) {
         cellDates: true,
       }),
       ws = wb.Sheets[c.sheet] || wb.Sheets[wb.SheetNames[0]];
-    if (key === "acucon" || key === "carnf") {
+    if (key === "acucon" || key === "carnf" || key === "aforos") {
       rows = calculatedRowsFromSheet(ws, c);
       stores[key].rows = rows;
     } else if (key === "chg") {

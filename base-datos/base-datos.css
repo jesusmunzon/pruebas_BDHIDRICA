@@ -202,18 +202,18 @@ body:has(.tab[data-dataset="carnf"].active) #tableBody td:nth-child(n+5):nth-chi
 body:has(.tab[data-dataset="carnf"].active) #headRow th{white-space:normal;line-height:1.15;padding:9px 5px!important}
 body:has(.tab[data-dataset="carnf"].active) #headRow .sortButton{width:100%;justify-content:center;white-space:normal;text-align:center;line-height:1.15;font-size:15px!important;font-weight:800!important;color:#28465f!important}
 body:has(.tab[data-dataset="carnf"].active)
-/* Datos CARNF: encabezados generales de las columnas 1 a 5 */
-body:has(.tab[data-dataset="carnf"].active)
-#headRow th:nth-child(-n + 5) .sortButton {
-  font-size: 15px !important;
-}
-
-/* Datos CARNF: encabezados de las columnas 6 a 14 */
-body:has(.tab[data-dataset="carnf"].active)
-#headRow th:nth-child(n + 6):nth-child(-n + 14) .sortButton {
+#headRow .sortButton:has(br) {
   font-size: 12px !important;
 }
 
+/* Código población y Consumos propios a 15 px */
+body:has(.tab[data-dataset="carnf"].active)
+#headRow th:nth-child(3) .sortButton,
+
+body:has(.tab[data-dataset="carnf"].active)
+#headRow th:nth-child(5) .sortButton {
+  font-size: 15px !important;
+}
 body:has(.tab[data-dataset="carnf"].active) #headRow .sortButton.active{color:#0f5fbf !important}
 body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(9),
 body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(13){background-color:#cbd9e6!important}
@@ -233,38 +233,77 @@ body:has(.tab[data-dataset="carnf"].active) #tableBody td:nth-child(2) {
   min-width: 160px;
   max-width: 160px;
 }
-/* IGUALAR ANCHOS ENTRE DATOS ACUCON Y DATOS CARNF */
 
-/* Poblacion: columna 3 en ACUCON y columna 4 en CARNF */
-body:has(.tab[data-dataset="acucon"].active) #headRow th:nth-child(3),
-body:has(.tab[data-dataset="acucon"].active) #filterRow th:nth-child(3),
-body:has(.tab[data-dataset="acucon"].active) #tableBody td:nth-child(3),
-body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(4),
-body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(4),
-body:has(.tab[data-dataset="carnf"].active) #tableBody td:nth-child(4) {
+/* DATOS AFOROS Y PERDIDAS */
+body:has(.tab[data-dataset="aforos"].active) .tableWrap table {
+  min-width: 1650px;
+}
+
+/* Las cuatro primeras columnas replican los anchos de Datos CARNF */
+body:has(.tab[data-dataset="aforos"].active) #headRow th:nth-child(1),
+body:has(.tab[data-dataset="aforos"].active) #filterRow th:nth-child(1),
+body:has(.tab[data-dataset="aforos"].active) #tableBody td:nth-child(1),
+body:has(.tab[data-dataset="aforos"].active) #headRow th:nth-child(2),
+body:has(.tab[data-dataset="aforos"].active) #filterRow th:nth-child(2),
+body:has(.tab[data-dataset="aforos"].active) #tableBody td:nth-child(2) {
+  width: 160px !important;
+  min-width: 160px !important;
+  max-width: 160px !important;
+}
+
+body:has(.tab[data-dataset="aforos"].active) #headRow th:nth-child(3),
+body:has(.tab[data-dataset="aforos"].active) #filterRow th:nth-child(3),
+body:has(.tab[data-dataset="aforos"].active) #tableBody td:nth-child(3) {
+  width: 125px !important;
+  min-width: 125px !important;
+  max-width: 125px !important;
+}
+
+body:has(.tab[data-dataset="aforos"].active) #headRow th:nth-child(4),
+body:has(.tab[data-dataset="aforos"].active) #filterRow th:nth-child(4),
+body:has(.tab[data-dataset="aforos"].active) #tableBody td:nth-child(4) {
   width: 200px !important;
   min-width: 200px !important;
   max-width: 200px !important;
 }
 
-/* El filtro de Poblacion queda contenido dentro de la columna */
-body:has(.tab[data-dataset="acucon"].active) #filterRow th:nth-child(3) input,
-body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(4) input {
-  display: block !important;
+/* Columnas de datos 5 a 9 */
+body:has(.tab[data-dataset="aforos"].active) #headRow th:nth-child(n + 5):nth-child(-n + 9),
+body:has(.tab[data-dataset="aforos"].active) #filterRow th:nth-child(n + 5):nth-child(-n + 9),
+body:has(.tab[data-dataset="aforos"].active) #tableBody td:nth-child(n + 5):nth-child(-n + 9) {
+  width: 185px !important;
+  min-width: 185px !important;
+  max-width: 185px !important;
+}
+
+/* Tipografía: primeras 4 columnas a 15 px; columnas 5 a 9 a 12 px */
+body:has(.tab[data-dataset="aforos"].active) #headRow th:nth-child(-n + 4) .sortButton {
+  font-size: 15px !important;
+}
+body:has(.tab[data-dataset="aforos"].active) #headRow th:nth-child(n + 5):nth-child(-n + 9) .sortButton {
+  width: 100%;
+  justify-content: center;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.15;
+  font-size: 12px !important;
+}
+body:has(.tab[data-dataset="aforos"].active) #headRow .sortButton.active {
+  color: #0f5fbf !important;
+}
+
+/* Filtros ajustados dentro de sus columnas */
+body:has(.tab[data-dataset="aforos"].active) #filterRow input {
   box-sizing: border-box !important;
   width: 100% !important;
   min-width: 0 !important;
   max-width: 100% !important;
-  margin: 0 !important;
 }
 
-/* Acciones: mismo ancho en ACUCON y CARNF */
-body:has(.tab[data-dataset="acucon"].active) #headRow th:last-child,
-body:has(.tab[data-dataset="acucon"].active) #filterRow th:last-child,
-body:has(.tab[data-dataset="acucon"].active) #tableBody td:last-child,
-body:has(.tab[data-dataset="carnf"].active) #headRow th:last-child,
-body:has(.tab[data-dataset="carnf"].active) #filterRow th:last-child,
-body:has(.tab[data-dataset="carnf"].active) #tableBody td:last-child {
+/* Acciones igual que en CARNF */
+body:has(.tab[data-dataset="aforos"].active) #headRow th:last-child,
+body:has(.tab[data-dataset="aforos"].active) #filterRow th:last-child,
+body:has(.tab[data-dataset="aforos"].active) #tableBody td:last-child {
   width: 104px !important;
   min-width: 104px !important;
   max-width: 104px !important;
