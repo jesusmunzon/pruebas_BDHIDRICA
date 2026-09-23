@@ -308,3 +308,47 @@ body:has(.tab[data-dataset="aforos"].active) #tableBody td:last-child {
   min-width: 104px !important;
   max-width: 104px !important;
 }
+
+/* CORRECCION FINAL CARNF: Poblacion y Acciones iguales a ACUCON */
+/* Poblacion: columna 4 de CARNF = columna 3 de ACUCON */
+body:has(.tab[data-dataset="acucon"].active) #headRow th:nth-child(3),
+body:has(.tab[data-dataset="acucon"].active) #filterRow th:nth-child(3),
+body:has(.tab[data-dataset="acucon"].active) #tableBody td:nth-child(3),
+body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(4),
+body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(4),
+body:has(.tab[data-dataset="carnf"].active) #tableBody td:nth-child(4) {
+  width: 200px !important;
+  min-width: 200px !important;
+  max-width: 200px !important;
+}
+
+body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(4),
+body:has(.tab[data-dataset="acucon"].active) #filterRow th:nth-child(3) {
+  padding: 8px 6px !important;
+  overflow: hidden !important;
+}
+
+body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(4) input,
+body:has(.tab[data-dataset="acucon"].active) #filterRow th:nth-child(3) input {
+  display: block !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+/* Acciones: misma anchura real en ambas tablas */
+body:has(.tab[data-dataset="acucon"].active) #headRow th:last-child,
+body:has(.tab[data-dataset="acucon"].active) #filterRow th:last-child,
+body:has(.tab[data-dataset="acucon"].active) #tableBody td.actions,
+body:has(.tab[data-dataset="carnf"].active) #headRow th:last-child,
+body:has(.tab[data-dataset="carnf"].active) #filterRow th:last-child,
+body:has(.tab[data-dataset="carnf"].active) #tableBody td.actions {
+  box-sizing: border-box !important;
+  width: 104px !important;
+  min-width: 104px !important;
+  max-width: 104px !important;
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+}
