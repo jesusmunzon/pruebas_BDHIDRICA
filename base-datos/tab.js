@@ -240,29 +240,29 @@ const DATASETS = {
     cols: [
       "FECHA",
       "FECHA DATOS",
-      "COD POBLACIÓN",
+      "CÓDIGO POBLACIÓN",
       "POBLACIÓN",
       "AFOROS NO Registrado Facturado (Bastones)",
       "AFOROS NO Registrado NO Facturado",
-      "PÉRDIDAS APARENTES (%)",
+      "PÉRIDAS APARENTES (%)",
       "PÉRDIDAS APARENTES (Imprecisión)",
       "Perdidas Tecnicas Mínimas (UARL) (Pérd. Reales)"
     ],
     labels: {
       "FECHA": "Fecha",
       "FECHA DATOS": "Fecha datos",
-      "COD POBLACIÓN": "Código<br>población",
+      "CÓDIGO POBLACIÓN": "Código<br>población",
       "POBLACIÓN": "Población",
       "AFOROS NO Registrado Facturado (Bastones)": "Aforos no registrado<br>facturado (Bastones)",
       "AFOROS NO Registrado NO Facturado": "Aforos no registrado<br>no facturado",
-      "PÉRDIDAS APARENTES (%)": "Pérdidas aparentes<br>(%)",
+      "PÉRIDAS APARENTES (%)": "Pérdidas aparentes<br>(%)",
       "PÉRDIDAS APARENTES (Imprecisión)": "Pérdidas aparentes<br>(Imprecisión)",
       "Perdidas Tecnicas Mínimas (UARL) (Pérd. Reales)": "Pérdidas técnicas mínimas (UARL)<br>(Pérd. reales)"
     },
     numeric: [
       "AFOROS NO Registrado Facturado (Bastones)",
       "AFOROS NO Registrado NO Facturado",
-      "PÉRDIDAS APARENTES (%)",
+      "PÉRIDAS APARENTES (%)",
       "PÉRDIDAS APARENTES (Imprecisión)",
       "Perdidas Tecnicas Mínimas (UARL) (Pérd. Reales)"
     ],
@@ -351,6 +351,8 @@ function isCalculatedCol(c, x) {
 }
 function normalizeHeader(v) {
   return String(v ?? "")
+    .replace(/[\u200B-\u200D\uFEFF]/g, "")
+    .replace(/\u00A0/g, " ")
     .replace(/\s+/g, " ")
     .trim();
 }
