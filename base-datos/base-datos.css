@@ -214,7 +214,7 @@ body:has(.tab[data-dataset="carnf"].active)
 #headRow th:nth-child(5) .sortButton {
   font-size: 15px !important;
 }
-body:has(.tab[data-dataset="carnf"].active) #headRow .sortButton.active{color:var(--blue)!important}
+body:has(.tab[data-dataset="carnf"].active) #headRow .sortButton.active{color:#0f5fbf !important}
 body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(9),
 body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(13){background-color:#cbd9e6!important}
 .tableWrap thead{position:sticky;top:0;z-index:20}
@@ -229,7 +229,51 @@ body:has(.tab[data-dataset="carnf"].active) #tableBody td:nth-child(1),
 body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(2),
 body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(2),
 body:has(.tab[data-dataset="carnf"].active) #tableBody td:nth-child(2) {
-  width: 180px;
-  min-width: 180px;
-  max-width: 180px;
+  width: 160px;
+  min-width: 160px;
+  max-width: 160px;
+}
+
+/* AJUSTE FINAL CARNF: fechas y filtro Población */
+
+/* Fecha y Fecha datos: exactamente el mismo ancho en ACUCON y CARNF */
+body:has(.tab[data-dataset="acucon"].active) #headRow th:nth-child(1),
+body:has(.tab[data-dataset="acucon"].active) #filterRow th:nth-child(1),
+body:has(.tab[data-dataset="acucon"].active) #tableBody td:nth-child(1),
+body:has(.tab[data-dataset="acucon"].active) #headRow th:nth-child(2),
+body:has(.tab[data-dataset="acucon"].active) #filterRow th:nth-child(2),
+body:has(.tab[data-dataset="acucon"].active) #tableBody td:nth-child(2),
+body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(1),
+body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(1),
+body:has(.tab[data-dataset="carnf"].active) #tableBody td:nth-child(1),
+body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(2),
+body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(2),
+body:has(.tab[data-dataset="carnf"].active) #tableBody td:nth-child(2) {
+  width: 160px !important;
+  min-width: 160px !important;
+  max-width: 160px !important;
+}
+
+/* Datos CARNF: ancho estable para la columna Población */
+body:has(.tab[data-dataset="carnf"].active) #headRow th:nth-child(4),
+body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(4),
+body:has(.tab[data-dataset="carnf"].active) #tableBody td:nth-child(4) {
+  width: 320px !important;
+  min-width: 320px !important;
+  max-width: 320px !important;
+}
+
+/* Evita que el campo Filtrar de Población se ensanche o invada otras columnas */
+body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(4) {
+  padding: 8px 6px !important;
+  overflow: hidden !important;
+}
+
+body:has(.tab[data-dataset="carnf"].active) #filterRow th:nth-child(4) input {
+  display: block !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  margin: 0 !important;
 }
