@@ -1,0 +1,251 @@
+<!doctype html>
+<html class="h-full" lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="light dark" name="color-scheme" />
+    <title>Control de Red</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="styles.css?v=20261005-07" rel="stylesheet" />
+  </head>
+  <body>
+    <aside class="sidebar" id="sidebar">
+      <header class="brand">
+        <div class="brand-icon">
+          <i data-lucide="waves"> </i>
+        </div>
+        <div>
+          <strong> Control de Red </strong>
+          <span> Analítica hidráulica </span>
+        </div>
+        <button
+          aria-label="Cerrar menú"
+          class="icon-button mobile-only"
+          id="closeMenu"
+        >
+          <i data-lucide="x"> </i>
+        </button>
+      </header>
+      <nav class="nav">
+        <p class="nav-title">Menú principal</p>
+        <button class="nav-item active" data-tab="dashboard">
+          <i data-lucide="layout-dashboard"> </i>
+          <span> Estadísticos 1 </span>
+        </button>
+        <button class="nav-item" data-tab="estadisticos2">
+          <i data-lucide="bar-chart-3"> </i>
+          <span> Estadísticos 2 </span>
+        </button>
+        <button class="nav-item" data-tab="estadisticos3">
+          <i data-lucide="user"> </i>
+          <span> Estadísticos 3 </span>
+        </button>
+        <button class="nav-item" data-tab="estadisticos4">
+          <i data-lucide="trending-up"> </i>
+          <span> Estadísticos 4 </span>
+        </button>
+        <a class="nav-item" href="Informe_IA/index.html">
+          <i class="ai-icon" data-lucide="sparkles"> </i>
+          <span> Informe IA Ejecutivo </span>
+          <small> Copilot </small>
+        </a>
+        <p class="nav-title second">Ajustes y sistema</p>
+        <a class="nav-item" href="base-datos/index.html">
+          <i data-lucide="database"> </i>
+          <span> Base de datos </span>
+        </a>
+        <a class="nav-item" href="tablas_auxiliares/index.html">
+          <i data-lucide="table-2"></i>
+          <span>Tablas auxiliares</span>
+        </a>
+      </nav>
+      <footer class="sidebar-footer">
+        <div class="status-icon">
+          <i data-lucide="circle-user-round"> </i>
+          <b> </b>
+        </div>
+        <div>
+          <strong id="sidebarUserName"> Invitado </strong>
+          <span id="sidebarUserMode"> Modo Lectura </span>
+        </div>
+        <button class="theme-button" id="themeToggle" title="Cambiar tema">
+          <i data-lucide="moon" id="themeIcon"> </i>
+        </button>
+      </footer>
+    </aside>
+    <div class="overlay" id="overlay"></div>
+    <div class="app-shell">
+      <header class="topbar">
+        <button
+          aria-label="Abrir menú"
+          class="icon-button mobile-only"
+          id="openMenu"
+        >
+          <i data-lucide="menu"> </i>
+        </button>
+        <div class="heading">
+          <h1 id="pageTitle">Estadísticos 1</h1>
+          <p id="pageDescription">
+            Evolución histórica de los principales indicadores de captación,
+            distribución e intercambios de agua
+          </p>
+        </div>
+        <div class="topbar-actions">
+          <button class="header-action" id="printButton" type="button">
+            <i data-lucide="printer"></i>
+            <span>Imprimir</span>
+          </button>
+          <button class="header-action user-action" id="identityButton" type="button" aria-haspopup="dialog">
+            <i data-lucide="user"></i>
+            <span id="headerUserName">Invitado</span>
+          </button>
+        </div>
+      </header>
+      <main>
+        <section class="tab-panel active" id="panel-dashboard">
+          <section class="filters-card">
+            <div class="filters-label">
+              <i data-lucide="filter"> </i>
+              <strong> Filtros: </strong>
+            </div>
+            <label>
+              <span> Mes </span>
+              <select id="month"></select>
+            </label>
+            <label>
+              <span> Año </span>
+              <select id="year"></select>
+            </label>
+            <div class="today-date" aria-label="Fecha actual">
+              <i data-lucide="calendar-days"></i>
+              <span id="todayDate"></span>
+            </div>
+          </section>
+          <section class="dashboard-grid">
+            <article class="chart-card wide">
+              <div class="chart-head">
+                <div>
+                  <h2>Agua captada acumulada</h2>
+                  <p id="capSub"></p>
+                </div>
+                <span class="unit-pill"> m³/día </span>
+              </div>
+              <div class="chart chart-tall">
+                <canvas id="captada"> </canvas>
+              </div>
+            </article>
+            <div class="mini-chart-grid wide">
+              <article class="chart-card">
+                <div class="chart-head">
+                  <div>
+                    <h3>Agua bruta exportada</h3>
+                    <p>Totales acumulados</p>
+                  </div>
+                  <span class="unit-pill"> dam³ </span>
+                </div>
+                <div class="chart">
+                  <canvas id="bruta"> </canvas>
+                </div>
+              </article>
+              <article class="chart-card">
+                <div class="chart-head">
+                  <div>
+                    <h3>Agua tratada importada</h3>
+                    <p>Totales acumulados</p>
+                  </div>
+                  <span class="unit-pill"> dam³ </span>
+                </div>
+                <div class="chart">
+                  <canvas id="importada"> </canvas>
+                </div>
+              </article>
+              <article class="chart-card">
+                <div class="chart-head">
+                  <div>
+                    <h3>Agua tratada exportada</h3>
+                    <p>Totales acumulados</p>
+                  </div>
+                  <span class="unit-pill"> dam³ </span>
+                </div>
+                <div class="chart">
+                  <canvas id="exportada"> </canvas>
+                </div>
+              </article>
+            </div>
+            <article class="chart-card two">
+              <div class="chart-head">
+                <div>
+                  <h2>Agua distribuida</h2>
+                  <p id="distSub"></p>
+                </div>
+                <span class="unit-pill"> m³/día </span>
+              </div>
+              <div class="chart chart-tall">
+                <canvas id="distribuida"> </canvas>
+              </div>
+            </article>
+            <article class="chart-card one">
+              <div class="chart-head">
+                <div>
+                  <h2>Distribución por poblaciones</h2>
+                  <p id="popSub"></p>
+                </div>
+                <span class="unit-pill"> m³ </span>
+              </div>
+              <div class="chart chart-tall">
+                <canvas id="poblaciones"> </canvas>
+              </div>
+            </article>
+          </section>
+          <section class="operational-tables" id="operationalTables" aria-live="polite"></section>
+        </section>
+        <div class="auth-modal" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle" hidden>
+          <div class="auth-backdrop" data-close-auth></div>
+          <section class="auth-dialog">
+            <header class="auth-dialog-head">
+              <div>
+                <h2 id="authTitle">Identificación de usuario</h2>
+                <p>Acceso al modo administrador</p>
+              </div>
+              <button class="auth-close" id="authClose" type="button" aria-label="Cerrar">
+                <i data-lucide="x"></i>
+              </button>
+            </header>
+            <form id="authForm" novalidate>
+              <label class="auth-field">
+                <span>Nombre de usuario</span>
+                <div><i data-lucide="user"></i><input id="authUser" autocomplete="username" required /></div>
+              </label>
+              <label class="auth-field">
+                <span>Contraseña</span>
+                <div><i data-lucide="lock-keyhole"></i><input id="authPassword" type="password" autocomplete="current-password" required /></div>
+              </label>
+              <p class="auth-message" id="authMessage" aria-live="polite"></p>
+              <div class="auth-guest-row">
+                <button class="auth-guest" id="guestModeButton" type="button">
+                  <i data-lucide="user-round"></i>
+                  Continuar como Invitado
+                </button>
+              </div>
+              <div class="auth-actions">
+                <button class="auth-cancel" id="authCancel" type="button">Cancelar</button>
+                <button class="auth-submit" type="submit">Iniciar sesión</button>
+              </div>
+            </form>
+          </section>
+        </div>
+        <div id="loading">Preparando visualización...</div>
+      </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <script src="Chart.js?v=20261002-04"></script>
+    <script type="module" src="app.js?v=20261005-07"></script>
+  </body>
+</html>

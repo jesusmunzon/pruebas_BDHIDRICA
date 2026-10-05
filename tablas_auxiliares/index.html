@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Tablas auxiliares | Control de Red</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="styles.css?v=20260930-1915" />
+  </head>
+  <body>
+    <aside id="sidebar" class="sidebar">
+      <header class="brand">
+        <div class="brand-icon"><i data-lucide="waves"></i></div>
+        <div>
+          <strong>Control de Red</strong><span>Analítica hidráulica</span>
+        </div>
+        <button
+          id="closeMenu"
+          class="icon-button mobile-only"
+          type="button"
+          aria-label="Cerrar menú"
+        >
+          <i data-lucide="x"></i>
+        </button>
+      </header>
+      <nav class="nav">
+        <p class="nav-title">Menú principal</p>
+        <a class="nav-item" href="../index.html"
+          ><i data-lucide="layout-dashboard"></i><span>Estadísticos 1</span></a
+        >
+        <button class="nav-item" type="button">
+          <i data-lucide="bar-chart-3"></i><span>Estadísticos 2</span>
+        </button>
+        <button class="nav-item" type="button">
+          <i data-lucide="activity"></i><span>Estadísticos 3</span>
+        </button>
+        <button class="nav-item" type="button">
+          <i data-lucide="trending-up"></i><span>Estadísticos 4</span>
+        </button>
+        <a class="nav-item" href="../Informe_IA/index.html"
+          ><i class="ai-icon" data-lucide="sparkles"></i
+          ><span>Informe IA Ejecutivo</span><small>Copilot</small></a
+        >
+        <p class="nav-title second">Ajustes y sistema</p>
+        <a class="nav-item" href="../base-datos/index.html"
+          ><i data-lucide="database"></i><span>Base de datos</span></a
+        >
+        <a class="nav-item active" href="index.html"
+          ><i data-lucide="table-2"></i><span>Tablas auxiliares</span></a
+        >
+      </nav>
+      <footer class="sidebar-footer">
+        <div class="status-icon"><i data-lucide="activity"></i><b></b></div>
+        <div>
+          <strong>Sistema operativo</strong
+          ><span id="dataStatus">Cargando datos...</span>
+        </div>
+      </footer>
+    </aside>
+
+    <div id="overlay" class="overlay"></div>
+    <div class="app-shell">
+      <header class="topbar">
+        <button
+          id="openMenu"
+          class="icon-button mobile-only"
+          type="button"
+          aria-label="Abrir menú"
+        >
+          <i data-lucide="menu"></i>
+        </button>
+        <div class="heading">
+          <h1>Tablas auxiliares</h1>
+          <p>
+            Distribución calculada por población, código de dispositivo y factor
+          </p>
+        </div>
+        <div class="top-actions">
+          <button id="saveExcel" class="primary" type="button">
+            <i data-lucide="download"></i>Guardar Excel
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section class="control-card">
+          <div class="control-title">
+            <i data-lucide="filter"></i><strong>Período de cálculo</strong>
+          </div>
+          <label
+            ><span>Mes</span
+            ><select id="monthFilter"></select
+          ></label>
+          <label
+            ><span>Año</span
+            ><select id="yearFilter"></select
+          ></label>
+          <div class="source-info">
+            <i data-lucide="database"></i
+            ><span id="sourceInfo">Esperando los datos de Google Sheets...</span>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Distribuido por poblaciones</h2>
+              <p>
+                Solo son editables COD_DISP y FACTOR en las filas de detalle.
+              </p>
+            </div>
+            <span id="dirtyBadge" class="dirty-badge" hidden
+              >Cambios pendientes</span
+            >
+          </div>
+          <div id="errorBox" class="error-box" hidden></div>
+          <div class="table-wrap">
+            <table id="auxTable" aria-label="Distribuido por poblaciones">
+              <colgroup>
+                <!-- A-D: conservar exactamente los anchos actuales -->
+                <col class="col-a" />
+                <col class="col-b" />
+                <col class="col-c" />
+                <col class="col-d" />
+                <!-- E-G -->
+                <col class="col-94" />
+                <col class="col-94" />
+                <col class="col-94" />
+                <!-- H: separador -->
+                <col class="col-spacer" />
+                <!-- I-J -->
+                <col class="col-94" />
+                <col class="col-94" />
+                <!-- K: separador -->
+                <col class="col-spacer" />
+                <!-- L-U -->
+                <col class="col-94" />
+                <col class="col-94" />
+                <col class="col-94" />
+                <col class="col-94" />
+                <col class="col-94" />
+                <col class="col-94" />
+                <col class="col-94" />
+                <col class="col-94" />
+                <col class="col-94" />
+                <col class="col-94" />
+              </colgroup>
+              <tbody id="tableBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" role="status"></div>
+<<<<<<< HEAD
+    <script type="module" src="app.js?v=20261002-02"></script>
+=======
+    <script src="app.js?v=20260930-2110-2050"></script>
+>>>>>>> bc47705ca2fa7ea7705b7e0ed0c2b6c34e2dd65c
+  </body>
+</html>

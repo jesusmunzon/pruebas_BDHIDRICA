@@ -1,0 +1,929 @@
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100%;
+  font-family: Inter, sans-serif;
+}
+body {
+  --bg: #f8fafc;
+  --panel: #fff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --soft: #f1f5f9;
+  --brand: #4f46e5;
+  background: var(--bg);
+  color: var(--text);
+}
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 278px;
+  z-index: 40;
+  background: #fff;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+}
+.brand {
+  height: 78px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.brand-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #4f46e5, #8b5cf6);
+  box-shadow: 0 8px 18px #6366f14a;
+}
+.brand-icon svg {
+  width: 23px;
+}
+.brand strong,
+.brand span,
+.sidebar-footer strong,
+.sidebar-footer span {
+  display: block;
+}
+.brand strong {
+  font-size: 15px;
+}
+.brand span {
+  margin-top: 3px;
+  color: #4f46e5;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+.nav {
+  flex: 1;
+  overflow: auto;
+  padding: 24px 16px;
+}
+.nav-title {
+  margin: 0 0 8px;
+  padding: 0 12px;
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+.nav-title.second {
+  margin-top: 28px;
+}
+.nav-item,
+a.nav-item {
+  width: 100%;
+  margin: 2px 0;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 0;
+  border-radius: 12px;
+  color: #64748b;
+  background: transparent;
+  font: 600 13px Inter;
+  text-align: left;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+.nav-item svg {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  color: #94a3b8;
+}
+.nav-item:hover {
+  color: #0f172a;
+  background: #f1f5f9;
+}
+.nav-item.active {
+  color: #4338ca;
+  background: #eef2ff;
+}
+.nav-item.active svg {
+  color: #4f46e5;
+}
+.nav-item .ai-icon {
+  color: #f59e0b;
+}
+.nav-item small {
+  margin-left: auto;
+  padding: 3px 7px;
+  color: #b45309;
+  background: #fef3c7;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.sidebar-footer {
+  margin: 16px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+.sidebar-footer strong {
+  font-size: 11px;
+}
+.sidebar-footer span {
+  margin-top: 3px;
+  color: #94a3b8;
+  font-size: 10px;
+}
+.status-icon {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  color: #059669;
+  background: #fff;
+  border-radius: 12px;
+}
+.status-icon svg {
+  width: 17px;
+}
+.status-icon b {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  background: #10b981;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+.app-shell {
+  margin-left: 278px;
+  min-height: 100vh;
+}
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  min-height: 78px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+.heading h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+.heading p {
+  margin: 5px 0 0;
+  color: #94a3b8;
+  font-size: 11px;
+}
+.primary {
+  height: 42px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 11px;
+  color: #fff;
+  background: #4f46e5;
+  font: 800 11px Inter;
+  cursor: pointer;
+}
+.primary svg {
+  width: 16px;
+}
+.icon-button {
+  padding: 8px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: #fff;
+  color: #64748b;
+}
+.icon-button svg {
+  width: 18px;
+}
+.mobile-only {
+  display: none;
+}
+main {
+  padding: 20px;
+}
+.control-card,
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 1px 3px #0f172a0d;
+}
+.control-card {
+  min-height: 72px;
+  padding: 13px 16px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.control-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 150px;
+  color: #475569;
+  font-size: 12px;
+}
+.control-title svg {
+  width: 18px;
+  color: #4f46e5;
+}
+.control-card label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.control-card label span {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #64748b;
+}
+.control-card select {
+  height: 42px;
+  min-width: 130px;
+  padding: 0 36px 0 13px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: #f8fafc;
+  color: #0f172a;
+  font: 700 12px Inter;
+}
+.source-info {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #64748b;
+  font-size: 10px;
+}
+.source-info svg {
+  width: 16px;
+  color: #10b981;
+}
+.panel {
+  margin-top: 16px;
+  overflow: hidden;
+}
+.panel-head {
+  min-height: 72px;
+  padding: 15px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+}
+.panel-head h2 {
+  margin: 0;
+  font-size: 16px;
+}
+.panel-head p {
+  margin: 5px 0 0;
+  color: #94a3b8;
+  font-size: 10px;
+}
+.dirty-badge {
+  padding: 5px 9px;
+  color: #b45309;
+  background: #fef3c7;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+}
+.error-box {
+  margin: 14px;
+  padding: 12px 14px;
+  color: #b91c1c;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  font-size: 11px;
+}
+.table-wrap {
+  position: relative;
+  max-height: calc(100vh - 275px);
+  overflow: auto;
+}
+.table-wrap table {
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 11px;
+  background: #fff;
+}
+.table-wrap td {
+  height: 38px;
+  padding: 7px 9px;
+  border-right: 1px solid #edf1f5;
+  border-bottom: 1px solid #edf1f5;
+  white-space: nowrap;
+  text-align: right;
+  background: #fff;
+}
+.table-wrap tr:nth-child(1) td,
+.table-wrap tr:nth-child(2) td {
+  position: sticky;
+  z-index: 24;
+  background: #eaf1f7;
+  color: #38556d;
+  font-weight: 800;
+  text-align: center;
+}
+.table-wrap tr:nth-child(1) td {
+  top: 0;
+  height: 42px;
+}
+.table-wrap tr:nth-child(2) td {
+  top: 42px;
+  height: 42px;
+}
+.table-wrap td:nth-child(1),
+.table-wrap td:nth-child(2),
+.table-wrap td:nth-child(3),
+.table-wrap td:nth-child(4) {
+  position: sticky;
+  z-index: 18;
+  text-align: left;
+  background: #fff;
+}
+.table-wrap td:nth-child(1) {
+  left: 0;
+  width: 125px;
+  min-width: 125px;
+  max-width: 125px;
+}
+.table-wrap td:nth-child(2) {
+  left: 125px;
+  width: 270px;
+  min-width: 270px;
+  max-width: 270px;
+}
+.table-wrap td:nth-child(3) {
+  left: 395px;
+  width: 210px;
+  min-width: 210px;
+  max-width: 210px;
+}
+.table-wrap td:nth-child(4) {
+  left: 605px;
+  width: 95px;
+  min-width: 95px;
+  max-width: 95px;
+  box-shadow: 7px 0 10px -10px #0f172a;
+}
+.table-wrap tr:nth-child(1) td:nth-child(-n + 4),
+.table-wrap tr:nth-child(2) td:nth-child(-n + 4) {
+  z-index: 30;
+  background: #eaf1f7;
+}
+.table-wrap tr.section-row td {
+  position: sticky;
+  left: 0;
+  z-index: 19;
+  color: #fff;
+  background: #334155 !important;
+  font-weight: 800;
+  text-align: left;
+}
+.table-wrap tr.header-row td {
+  color: #38556d;
+  background: #eaf1f7 !important;
+  font-weight: 800;
+  text-align: center;
+}
+.table-wrap tr.total-row td {
+  background: #eef2ff !important;
+  color: #312e81;
+  font-weight: 800;
+  border-top: 2px solid #c7d2fe;
+}
+.table-wrap tr.detail-row:hover td {
+  background: #f8fafc;
+}
+.table-wrap tr.detail-row:hover td:nth-child(-n + 4) {
+  background: #f8fafc;
+}
+.editable-cell {
+  padding: 0 !important;
+  background: #eff6ff !important;
+}
+.editable-cell input {
+  width: 100%;
+  height: 37px;
+  padding: 6px 8px;
+  border: 0;
+  background: transparent;
+  color: #1d4ed8;
+  font: 700 11px Inter;
+  outline: none;
+}
+.editable-cell input:focus {
+  background: #dbeafe;
+  box-shadow: inset 0 0 0 2px #60a5fa;
+}
+.calculated {
+  color: #166534;
+}
+.spacer-column {
+  width: 28px;
+  min-width: 28px;
+  background: #f8fafc !important;
+}
+#toast {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 100;
+  padding: 12px 16px;
+  color: #fff;
+  background: #0f172a;
+  border-radius: 10px;
+  font-size: 12px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: 0.2s;
+  pointer-events: none;
+}
+#toast.show {
+  opacity: 1;
+  transform: none;
+}
+.overlay {
+  display: none;
+}
+@media (max-width: 900px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: 0.25s;
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .app-shell {
+    margin-left: 0;
+  }
+  .mobile-only {
+    display: grid;
+  }
+  .overlay.open {
+    position: fixed;
+    inset: 0;
+    z-index: 35;
+    display: block;
+    background: #02061766;
+  }
+  .topbar {
+    padding: 10px 14px;
+  }
+  .heading h1 {
+    font-size: 20px;
+  }
+  .heading p {
+    max-width: 52vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  main {
+    padding: 14px;
+  }
+  .control-card {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .control-card label {
+    justify-content: space-between;
+  }
+  .source-info {
+    margin-left: 0;
+  }
+  .table-wrap {
+    max-height: calc(100vh - 390px);
+  }
+}
+
+/* El periodo se recibe desde Estadisticos 1 mediante localStorage. */
+.control-card {
+  display: none !important;
+}
+
+/* Aprovechar el espacio liberado para mostrar mas filas. */
+.table-wrap {
+  max-height: calc(100vh - 190px) !important;
+}
+
+/* Factor limitado a -1, 0 y 1 */
+#auxTable .factor-select {
+  width: 100%;
+  height: 37px;
+  padding: 0 28px 0 10px;
+  border: 0;
+  outline: none;
+  color: #1d4ed8;
+  background: #eff6ff;
+  font:
+    700 12px Inter,
+    sans-serif;
+  text-align: center;
+  cursor: pointer;
+}
+
+#auxTable .factor-select:focus {
+  background: #dbeafe;
+  box-shadow: inset 0 0 0 2px #60a5fa;
+}
+
+/* =========================================================
+   TÍTULOS DE POBLACIÓN COMBINADOS DE A HASTA D
+   ========================================================= */
+
+#auxTable tr.section-row .section-title-cell {
+  position: sticky;
+  left: 0;
+  z-index: 28;
+
+  width: 700px;
+  min-width: 700px;
+  max-width: 700px;
+  height: 38px;
+
+  padding: 0 14px;
+
+  color: #ffffff;
+  background: #334155 !important;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  text-align: left !important;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  box-shadow: 7px 0 10px -10px #0f172a;
+}
+
+/* =========================================================
+   FILAS TOTAL COMBINADAS DE A HASTA D
+   ========================================================= */
+
+#auxTable tr.total-row .total-label-cell {
+  position: sticky;
+  left: 0;
+  z-index: 28;
+  width: 700px;
+  min-width: 700px;
+  max-width: 700px;
+  height: 38px;
+  padding: 0 14px;
+  color: #312e81;
+  background: #eef2ff !important;
+  font-size: 11px;
+  font-weight: 800;
+  text-align: right !important;
+  vertical-align: middle;
+  white-space: nowrap;
+  border-top: 2px solid #c7d2fe;
+  box-shadow: 7px 0 10px -10px #0f172a;
+}
+
+/* Las celdas numéricas de las filas de total se centran. */
+
+#auxTable tr.total-row td:not(.total-label-cell) {
+  text-align: center !important;
+}
+
+/* El resto de celdas se muestra centrado. */
+
+#auxTable tr.header-row td,
+#auxTable tr.top-row td,
+#auxTable tr.detail-row td,
+#auxTable td.calculated {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+/* COD_DISP se mantiene visualmente centrado. */
+
+#auxTable tr.detail-row td:first-child input {
+  text-align: center !important;
+}
+
+/* El selector FACTOR se mantiene centrado. */
+
+#auxTable .factor-select {
+  text-align: center !important;
+  text-align-last: center;
+}
+
+/* =========================================================
+   COLUMNAS E, F Y G
+   ========================================================= */
+
+/* Cada una de las columnas E, F y G ocupa 94 px. */
+#auxTable td.period-column {
+  width: 94px;
+  min-width: 94px;
+  max-width: 94px;
+}
+
+/* Encabezado combinado de las columnas E, F y G. */
+#auxTable tr.top-row td.period-group-header {
+  width: 282px;
+  min-width: 282px;
+  max-width: 282px;
+  padding-left: 0;
+  padding-right: 0;
+  font-size: 11px !important;
+  font-weight: 800;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+/* =========================================================
+   COLUMNAS I Y J
+   ========================================================= */
+
+/* Cada una de las columnas I y J ocupa 94 px. */
+#auxTable td.accumulated-column {
+  width: 94px;
+  min-width: 94px;
+  max-width: 94px;
+}
+
+/* Encabezado combinado de las columnas I y J. */
+#auxTable td.accumulated-group-header {
+  width: 188px;
+  min-width: 188px;
+  max-width: 188px;
+
+  padding: 4px 6px;
+
+  text-align: center !important;
+  vertical-align: middle !important;
+
+  white-space: normal !important;
+  overflow-wrap: normal;
+  line-height: 1.15;
+  font-size: 10px;
+}
+/* =========================================================
+   COLUMNAS DESDE L HASTA U
+   ========================================================= */
+
+/* Cada columna desde L hasta U ocupa 94 px. */
+#auxTable td.annual-column {
+  width: 94px;
+  min-width: 94px;
+  max-width: 94px;
+}
+
+/* Encabezado combinado desde L hasta U. */
+#auxTable td.annual-group-header {
+  width: 940px;
+  min-width: 940px;
+  max-width: 940px;
+  padding: 4px 8px;
+  text-align: center !important;
+  vertical-align: middle !important;
+  white-space: normal !important;
+  overflow-wrap: normal;
+  line-height: 1.15;
+  font-size: 11px;
+}
+/* =========================================================
+   ESTRUCTURA FIJA DE LAS 21 COLUMNAS
+   ========================================================= */
+
+#auxTable {
+  /*
+   * 700 px de A-D
+   * 282 px de E-G
+   * 28 px de H
+   * 188 px de I-J
+   * 28 px de K
+   * 940 px de L-U
+   *
+   * Total: 2166 px
+   */
+  width: 2166px;
+  min-width: 2166px;
+  max-width: 2166px;
+
+  table-layout: fixed;
+}
+
+/* Columnas A-D: se conservan las medidas originales. */
+
+#auxTable col.col-a {
+  width: 125px;
+}
+
+#auxTable col.col-b {
+  width: 270px;
+}
+
+#auxTable col.col-c {
+  width: 210px;
+}
+
+#auxTable col.col-d {
+  width: 95px;
+}
+
+/* Columnas E-G, I-J y L-U. */
+
+#auxTable col.col-94 {
+  width: 94px;
+}
+
+/* Columnas separadoras H y K. */
+
+#auxTable col.col-spacer {
+  width: 28px;
+}
+
+/* Evita que el contenido modifique los anchos del colgroup. */
+
+#auxTable td {
+  overflow: hidden;
+}
+
+/* =========================================================
+   ENCABEZADOS SUPERIORES FIJOS
+   ========================================================= */
+
+/*
+ * Las dos primeras filas deben estar siempre por encima
+ * de todas las celdas del cuerpo.
+ */
+
+#auxTable tr:nth-child(1) > td {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #eaf1f7 !important;
+}
+
+#auxTable tr:nth-child(2) > td {
+  position: sticky;
+  top: 42px;
+  z-index: 50;
+  background: #eaf1f7 !important;
+}
+
+/*
+ * Las cuatro primeras celdas de las filas superiores
+ * deben quedar por encima tanto del desplazamiento
+ * horizontal como del desplazamiento vertical.
+ */
+
+#auxTable tr:nth-child(1) > td:nth-child(-n + 4),
+#auxTable tr:nth-child(2) > td:nth-child(-n + 4) {
+  z-index: 70;
+  background: #eaf1f7 !important;
+}
+
+/* =========================================================
+   COLUMNAS FIJAS A-D DEL CUERPO
+   ========================================================= */
+
+#auxTable tr:not(:nth-child(1)):not(:nth-child(2)) > td:nth-child(1) {
+  position: sticky;
+  left: 0;
+  z-index: 20;
+}
+
+#auxTable tr:not(:nth-child(1)):not(:nth-child(2)) > td:nth-child(2) {
+  position: sticky;
+  left: 125px;
+  z-index: 20;
+}
+
+#auxTable tr:not(:nth-child(1)):not(:nth-child(2)) > td:nth-child(3) {
+  position: sticky;
+  left: 395px;
+  z-index: 20;
+}
+
+#auxTable tr:not(:nth-child(1)):not(:nth-child(2)) > td:nth-child(4) {
+  position: sticky;
+  left: 605px;
+  z-index: 20;
+}
+
+/* =========================================================
+   ENCABEZADOS COMBINADOS
+   ========================================================= */
+#auxTable td.period-group-header,
+#auxTable td.accumulated-group-header,
+#auxTable td.annual-group-header {
+  padding: 4px 6px;
+  overflow: hidden;
+  white-space: normal !important;
+  overflow-wrap: normal;
+  text-align: center !important;
+  vertical-align: middle !important;
+  line-height: 1.15;
+}
+/* Primer encabezado: VOLUMENES MENSUALES */
+#auxTable td.period-group-header {
+  font-size: 11px;
+}
+/* Segundo encabezado: VOLUMENES ACUMULADOS HASTA MES */
+#auxTable td.accumulated-group-header {
+  font-size: 10px;
+}
+/* Tercer encabezado */
+#auxTable td.annual-group-header {
+  font-size: 11px;
+}
+/* =========================================================
+   FILAS DE POBLACIÓN Y TOTAL CON A-D COMBINADAS
+   ========================================================= */
+/*
+ * En estas filas, la primera celda ya representa A-D.
+ * Las celdas posteriores no deben adoptar las posiciones
+ * sticky correspondientes a B, C y D.
+ */
+#auxTable tr.section-row > td:not(.section-title-cell),
+#auxTable tr.total-row > td:not(.total-label-cell) {
+  position: static !important;
+  left: auto !important;
+  z-index: auto !important;
+  box-shadow: none !important;
+}
+/*
+ * Mantiene fija únicamente la celda combinada A-D
+ * del título de población.
+ */
+#auxTable tr.section-row > .section-title-cell {
+  position: sticky !important;
+  left: 0 !important;
+  z-index: 28 !important;
+  width: 700px;
+  min-width: 700px;
+  max-width: 700px;
+  border-right: 0 !important;
+  box-shadow: none !important;
+}
+/*
+ * Mantiene fija únicamente la celda combinada A-D
+ * de la fila TOTAL.
+ */
+#auxTable tr.total-row > .total-label-cell {
+  position: sticky !important;
+  left: 0 !important;
+  z-index: 28 !important;
+  width: 700px;
+  min-width: 700px;
+  max-width: 700px;
+  box-shadow: none !important;
+}
+/*
+ * La fila del título de población debe mostrarse
+ * como una franja continua, sin divisiones verticales.
+ */
+#auxTable tr.section-row > td {
+  border-right: 0 !important;
+}
+/*
+ * En las filas TOTAL se conservan las divisiones normales
+ * entre los resultados numéricos, pero no se permite que
+ * aparezcan dentro del área combinada A-D.
+ */
+#auxTable tr.total-row > .total-label-cell {
+  border-right: 1px solid #c7d2fe !important;
+}

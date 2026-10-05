@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="light dark" name="color-scheme" />
+    <title>Informe IA Ejecutivo | Control de Red</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <aside class="sidebar" id="sidebar">
+      <header class="brand">
+        <div class="brand-icon">
+          <i data-lucide="waves"> </i>
+        </div>
+        <div>
+          <strong> Control de Red </strong>
+          <span> Analítica hidráulica </span>
+        </div>
+        <button
+          aria-label="Cerrar menú"
+          class="icon-button mobile-only"
+          id="closeMenu"
+        >
+          <i data-lucide="x"> </i>
+        </button>
+      </header>
+      <nav class="nav">
+        <p class="nav-title">Menú principal</p>
+        <a class="nav-item" href="../index.html">
+          <i data-lucide="layout-dashboard"> </i>
+          <span> Estadísticos 1 </span>
+        </a>
+        <button class="nav-item">
+          <i data-lucide="bar-chart-3"> </i>
+          <span> Estadísticos 2 </span>
+        </button>
+        <button class="nav-item">
+          <i data-lucide="activity"> </i>
+          <span> Estadísticos 3 </span>
+        </button>
+        <button class="nav-item">
+          <i data-lucide="trending-up"> </i>
+          <span> Estadísticos 4 </span>
+        </button>
+        <a class="nav-item active" href="index.html">
+          <i class="ai-icon" data-lucide="sparkles"> </i>
+          <span> Informe IA Ejecutivo </span>
+          <small> Copilot </small>
+        </a>
+        <p class="nav-title second">Ajustes y sistema</p>
+        <a class="nav-item" href="../base-datos/index.html">
+          <i data-lucide="database"> </i>
+          <span> Base de datos </span>
+        </a>
+        <a class="nav-item" href="../tablas_auxiliares/">
+          <i data-lucide="table-2"> </i>
+          <span> Tablas auxiliares </span>
+        </a>
+      </nav>
+      <footer class="sidebar-footer">
+        <div class="status-icon">
+          <i data-lucide="activity"> </i>
+          <b> </b>
+        </div>
+        <div>
+          <strong> Sistema operativo </strong>
+          <span id="recordStatus"> Cargando datos... </span>
+        </div>
+        <button class="theme-button" id="themeToggle" title="Cambiar tema">
+          <i data-lucide="moon" id="themeIcon"> </i>
+        </button>
+      </footer>
+    </aside>
+    <div class="overlay" id="overlay"></div>
+    <div class="app-shell">
+      <header class="topbar">
+        <button
+          aria-label="Abrir menú"
+          class="icon-button mobile-only"
+          id="openMenu"
+        >
+          <i data-lucide="menu"> </i>
+        </button>
+        <div class="heading">
+          <h1>Informe IA Ejecutivo</h1>
+          <p>Análisis directivo basado en los registros de datos-red.json</p>
+        </div>
+      </header>
+      <main>
+        <article class="ai-hero">
+          <div class="ai-hero-title">
+            <span class="ai-badge">
+              <i data-lucide="sparkles"> </i>
+              Copilot ejecutivo
+            </span>
+            <span id="aiDataStatus"> Cargando datos... </span>
+          </div>
+          <h2>Generador de informe ejecutivo hidráulico</h2>
+          <p>
+            Selecciona el período, añade un enfoque opcional y genera una
+            síntesis basada en captación, producción, distribución e
+            intercambios.
+          </p>
+          <div class="report-filters">
+            <label>
+              <span> Mes </span>
+              <select id="month"></select>
+            </label>
+            <label>
+              <span> Año </span>
+              <select id="year"></select>
+            </label>
+          </div>
+          <label class="prompt-box">
+            <i data-lucide="message-square"> </i>
+            <textarea
+              id="aiPrompt"
+              placeholder="Ejemplo: analiza tendencias, riesgos y tres acciones prioritarias."
+              rows="3"
+            ></textarea>
+          </label>
+          <div class="ai-actions">
+            <button class="primary-button" id="generateReport">
+              <i data-lucide="sparkles"> </i>
+              Generar informe
+            </button>
+            <button class="secondary-button" id="printReport">
+              <i data-lucide="printer"> </i>
+              Imprimir / PDF
+            </button>
+          </div>
+        </article>
+        <div class="ai-loading" hidden="" id="aiLoading">
+          <span> </span>
+          <strong> Analizando datos... </strong>
+        </div>
+        <article class="report-card" id="executiveReport">
+          <header class="report-header">
+            <div>
+              <span> Control de Red </span>
+              <h2>Informe ejecutivo hidráulico</h2>
+              <p id="reportPeriod">
+                Selecciona un período y genera el informe.
+              </p>
+            </div>
+            <div>
+              <b id="reportDate"> </b>
+              <small> Documento dinámico </small>
+            </div>
+          </header>
+          <section class="report-summary">
+            <h3>Resumen ejecutivo</h3>
+            <p id="reportSummary">El contenido aparecerá en esta sección.</p>
+          </section>
+          <section class="report-kpis" id="reportKpis"></section>
+          <section class="report-columns">
+            <div>
+              <h3>
+                <i data-lucide="check-circle-2"> </i>
+                Fortalezas
+              </h3>
+              <ul id="reportStrengths"></ul>
+            </div>
+            <div>
+              <h3>
+                <i data-lucide="alert-triangle"> </i>
+                Riesgos y atención
+              </h3>
+              <ul id="reportRisks"></ul>
+            </div>
+          </section>
+          <section class="report-roadmap">
+            <h3>Recomendaciones prioritarias</h3>
+            <div id="reportActions"></div>
+          </section>
+          <footer class="report-footer">
+            Informe analítico sujeto a validación técnica antes de adoptar
+            decisiones operativas.
+          </footer>
+        </article>
+      </main>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
